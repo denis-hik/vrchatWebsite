@@ -1,0 +1,9 @@
+.body {
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #61dafb;
+    border-radius: 20px;
+    color: white;
+}
