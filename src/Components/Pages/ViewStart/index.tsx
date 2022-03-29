@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Convas from "./Convas/Convas";
 import bg from '../../../media/worldsBG.png';
 
@@ -10,6 +10,8 @@ interface propsI {
 
 const ViewStart = (props:propsI):JSX.Element => {
 
+    const [value, setVAlue] = useState('');
+
     return (
         <div className={style.body}>
             <img
@@ -18,6 +20,7 @@ const ViewStart = (props:propsI):JSX.Element => {
                 alt={'Banner_image'}
             />
             <Convas />
+            <input value={value} onChange={(el) => setVAlue(el.target.value)} />
         </div>
     )
 }
