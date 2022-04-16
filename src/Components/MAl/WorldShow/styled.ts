@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const Body = styled.div`
   width: 35vw;
-  height: 100vh;
+  height: calc(100vh - 20px);
   background: white;
   border-radius: 20px;
   padding-right: 10px;
   position: absolute;
-  left: calc(427px - 4vw);
-  bottom: 0;
+  left: calc(500px - 4vw);
+  bottom: 10px;
+  top: 10px;
   padding-left: 5vw;
   
   .close {
@@ -30,7 +31,8 @@ export const Body = styled.div`
   }
   
   @media(max-width: 1000px) {
-    width: calc(100vw - 20px);
+    top: unset;
+    width: 100vw;
     height: 72vh;
     background: white;
     border-radius: 20px 20px 0 0 ;
