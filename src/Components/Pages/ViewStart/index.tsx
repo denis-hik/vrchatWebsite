@@ -3,6 +3,7 @@ import Convas from "./Convas/Convas";
 import bg from '../../../media/worldsBG.png';
 
 import style from "./ViewStart.module.css"
+import BodyUI from "../../MAl/BodyUI";
 
 interface propsI {
 
@@ -13,7 +14,7 @@ const ViewStart = (props:propsI):JSX.Element => {
     const [value, setVAlue] = useState('');
 
     return (
-        <div className={style.body}>
+        <BodyUI>
             <img
                 className={style.banner}
                 src={bg}
@@ -21,7 +22,7 @@ const ViewStart = (props:propsI):JSX.Element => {
             />
             <Convas />
             <input value={value} onChange={(el) => setVAlue(el.target.value)} />
-        </div>
+        </BodyUI>
     )
 }
 
