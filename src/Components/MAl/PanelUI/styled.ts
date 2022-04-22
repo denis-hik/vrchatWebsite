@@ -21,6 +21,10 @@ export const Body = styled.div`
     -webkit-box-shadow: 12px 0 20px -12px rgba(0, 0, 0, 0.35);
     box-shadow: 12px 0 20px -12px rgba(0, 0, 0, 0.35);
   }
+  
+  .panel::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (max-width: 1000px) {
     z-index: 0;

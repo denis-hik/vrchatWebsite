@@ -12,7 +12,7 @@ const Button = (props:propsI):JSX.Element => {
 
     return (
         <div className={style.body}>
-            <NavLink to={'/worlds'} style={{color:"white"}} >
+            <NavLink to={props.url} style={{color:"white"}} >
                 <h4>{props.text}</h4>
             </NavLink>
         </div>

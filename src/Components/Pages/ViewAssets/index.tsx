@@ -4,11 +4,10 @@ import WorldShow from "../../MAl/WorldShow";
 import worldsConfig from "../../../Backend/worlds-config";
 import BodyUI from "../../MAl/BodyUI";
 import PanelUI from "../../MAl/PanelUI";
-import AdapterWorlds from "./AdapterWorlds/AdapterWorlds";
-import worldsData from '../../../Backend/worlds-config'
+import {InputUI} from "../../MAl/InputUI";
 
 
-const ViewWord = ():JSX.Element => {
+const ViewAssets = (): JSX.Element => {
 
     const [index, setIndex] = useState(-1);
 
@@ -19,18 +18,11 @@ const ViewWord = ():JSX.Element => {
                 src={bg}
                 alt={'Banner_image'}
             />
-            <PanelUI name={'worlds'}>
-                {/*@ts-ignore*/}
-                <AdapterWorlds data={worldsData}  setIndex={setIndex}/>
+            <PanelUI name={'Assets'}>
+                <InputUI hint={'pin'} />
             </PanelUI>
-            {index != -1 && <WorldShow
-                onClose={() => setIndex(-1)}
-                // @ts-ignore
-                data={worldsConfig[index || 0]}
-            />}
-
         </BodyUI>
     )
 }
 
-export default ViewWord
+export default ViewAssets
