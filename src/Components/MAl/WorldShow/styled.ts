@@ -7,7 +7,7 @@ export const Body = styled.div`
   border-radius: 20px;
   padding-right: 10px;
   position: absolute;
-  left: calc(427px - 4vw);
+  left: calc(320px - 4vw);
   bottom: 0;
   padding-left: 5vw;
   

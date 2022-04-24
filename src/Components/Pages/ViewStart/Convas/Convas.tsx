@@ -4,6 +4,8 @@ import style from './Convas.module.css';
 import Button from "./Button/Button";
 import ImageUI from "../../../MAl/ImageUI";
 import {LogoUI} from "../../../MAl/LogoUI";
+import SmallTextUI from "../../../MAl/SmallTextUI";
+import EmptyUI from "../../../MAl/EmptyUI";
 
 interface propsI {
 
@@ -21,6 +23,7 @@ const Convas = (props: propsI): JSX.Element => {
                 <Button text={'Worlds'} url={'/worlds'}  />
                 <Button text={'Assets'} url={'/assets'}  />
                 <Button text={'VRC Api'} url={'/vrc'}  />
+                <SmallTextUI text={'Denis Hik 2022, design DHCui'} color={'#61dafb'} />
             </div>
 
         </div>
