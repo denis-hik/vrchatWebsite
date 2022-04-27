@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../../MAl/ButtonUI";
+import Button from "../../../../MAl/Components/ButtonUI";
 
 type ItemAssetType = {
     name: string,

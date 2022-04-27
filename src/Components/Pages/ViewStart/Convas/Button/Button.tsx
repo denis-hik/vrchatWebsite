@@ -1,6 +1,6 @@
 import React from "react";
 
-import style from './Button.module.css'
+import {Body} from './styled'
 import {NavLink} from "react-router-dom";
 
 interface propsI {
@@ -11,11 +11,11 @@ interface propsI {
 const Button = (props:propsI):JSX.Element => {
 
     return (
-        <div className={style.body}>
-            <NavLink to={props.url} style={{color:"white"}} >
+        <Body>
+            <NavLink to={props.url} >
                 <h4>{props.text}</h4>
             </NavLink>
-        </div>
+        </Body>
     )
 };
 

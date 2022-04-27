@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import bg from "../../../media/worldsBG.png";
-import BodyUI from "../../MAl/BodyUI";
-import PanelUI from "../../MAl/PanelUI";
-import {InputUI} from "../../MAl/InputUI";
+import BodyUI from "../../MAl/Components/BodyUI";
+import PanelUI from "../../MAl/Components/PanelUI";
+import {InputUI} from "../../MAl/Components/InputUI";
 import {ItemAsset} from "./ui/ItemAsset";
-import EmptyUI from "../../MAl/EmptyUI";
+import EmptyUI from "../../MAl/Components/EmptyUI";
 import {AssetShow} from "./ui/AssetShow";
+import LoadingAssets from "./ui/LoadingAssets";
 
 export type dataAssetType = {
     name: string,
@@ -47,9 +48,9 @@ const ViewAssets = (): JSX.Element => {
             <PanelUI name={'Assets'}>
                 <InputUI hint={'pin'} />
                 <EmptyUI height={'20px'} />
-                {data.map((data: dataAssetType, index) => (
+                {data.length > 0 ? data.map((data: dataAssetType, index) => (
                     <ItemAsset tags={data[5]} name={data[1]} image={data[3]} setIndex={() => setIndex(index)} />
-                ))}
+                )) : <LoadingAssets />}
             </PanelUI>
             {index != -1 && <AssetShow
                 onClose={() => setIndex(-1)}

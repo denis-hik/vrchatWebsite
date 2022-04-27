@@ -1,10 +1,10 @@
 import {Body} from "./styled";
-import TextUI from "../TextUI";
-import ImageUI from "../ImageUI";
+import TextUI from "../Components/TextUI";
+import ImageUI from "../Components/ImageUI";
 import {worldsTypes} from "../../../Backend/types";
-import ButtonUI from "../ButtonUI";
-import TagsUI from "../TagsUI";
-import GridUI from "../GridUI";
+import ButtonUI from "../Components/ButtonUI";
+import TagsUI from "../Components/TagsUI";
+import GridUI from "../Components/GridUI";
 import {closeIcon} from "../../../media/icons";
 
 type propsType = {
@@ -20,12 +20,12 @@ const WorldShow = ({data, onClose}:propsType) => {
             <TextUI text={data.name} />
             <ImageUI src={data.image} />
             <TagsUI list={data.ex.split(',')} />
-            <ButtonUI text={'Join'} onClick={() => window.open(data.url)} />
-            <GridUI>
+            <ButtonUI bottom={!data.gallery} text={'Join'} onClick={() => window.open(data.url)} />
+            {data.gallery && <GridUI>
                 {data.gallery?.map((data) => (
-                    <ImageUI src={data} />
+                    <ImageUI src={data}/>
                 ))}
-            </GridUI>
+            </GridUI>}
 
         </Body>
     )

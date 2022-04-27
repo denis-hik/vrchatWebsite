@@ -6,12 +6,13 @@ type PropsI = {
     image?: string;
     outline?: boolean;
     tags?: string[],
+    bottom?: boolean,
 }
 
-const Button: React.FC<PropsI> = ({text,onClick, image, outline, tags}) => {
+const Button: React.FC<PropsI> = ({bottom, text,onClick, image, outline, tags}) => {
 
     return (
-        <Body className={outline ? 'outline' : 'notoutline'} onClick={onClick} >
+        <Body Bottom={bottom} className={outline ? 'outline' : 'notoutline'} onClick={onClick} >
             {image && <img src={image} alt={'button_image'}/> }
             <h4>{text}</h4>
             <Tags>{tags && tags.map((text) => (<span>{text.replace('"', "").replace('"', "")}</span>))}</Tags>

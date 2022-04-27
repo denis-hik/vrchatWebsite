@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import {getDark} from "../Scripts/getDark";
+
+const isDark = getDark();
 
 export const Body = styled.div`
   width: 35vw;
   height: 100vh;
-  background: white;
+  background: ${props => isDark ? '#363535' : '#FFFFFF'};
   border-radius: 20px;
   padding-right: 10px;
   position: absolute;

@@ -1,7 +1,7 @@
 import React from "react";
 import { worldsTypes } from "../../../../Backend/types";
 import {Body} from "../styled";
-import Button from "../../../MAl/ButtonUI";
+import Button from "../../../MAl/Components/ButtonUI";
 
 
 

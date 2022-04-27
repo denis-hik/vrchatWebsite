@@ -11,6 +11,7 @@
 }
 
 .panel {
+    position: relative;
     display: block;
     overflow: hidden;
     width: 50%;

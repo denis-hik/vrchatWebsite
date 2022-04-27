@@ -1,13 +1,11 @@
-import TextUI from "../../../../MAl/TextUI";
-import ImageUI from "../../../../MAl/ImageUI";
-import TagsUI from "../../../../MAl/TagsUI";
-import ButtonUI from "../../../../MAl/ButtonUI";
-import GridUI from "../../../../MAl/GridUI";
+import TextUI from "../../../../MAl/Components/TextUI";
+import ImageUI from "../../../../MAl/Components/ImageUI";
+import ButtonUI from "../../../../MAl/Components/ButtonUI";
 import {Body} from "../../../../MAl/WorldShow/styled";
 import {dataAssetType} from "../../index";
 import React from "react";
-import SmallTextUI from "../../../../MAl/SmallTextUI";
-import EmptyUI from "../../../../MAl/EmptyUI";
+import SmallTextUI from "../../../../MAl/Components/SmallTextUI";
+import EmptyUI from "../../../../MAl/Components/EmptyUI";
 
 type AssetShowType = {
     data: dataAssetType;
@@ -24,7 +22,7 @@ export const AssetShow: React.FC<AssetShowType> = ({data, onClose}) => {
             <SmallTextUI text={data[2]} color={'grey'} />
             {/*<TagsUI list={data.ex.split(',')}/>*/}
             <EmptyUI height={'20px'} />
-            <ButtonUI text={'Download'} onClick={() => window.open(data[4])}/>
+            <ButtonUI bottom={true} text={'Download'} onClick={() => window.open(data[4])}/>
             {/*<GridUI>*/}
             {/*    {data.gallery?.map((data) => (*/}
             {/*        <ImageUI src={data}/>*/}

@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import {getDark} from "../../Scripts/getDark";
+
+const isDark = getDark();
 
 export const Body = styled.div`
   width: 35vh;
@@ -15,7 +18,7 @@ export const Body = styled.div`
     height: calc(100vh - 16px);
     width: 100%;
     padding: 8px;
-    background: white;
+    background: ${props => isDark ? '#363535' : '#FFFFFF'};
     border-radius:  0 20px 20px 0;
     overflow-y: auto;
     -webkit-box-shadow: 12px 0 20px -12px rgba(0, 0, 0, 0.35);

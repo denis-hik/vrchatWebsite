@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import bg from "../../../media/worldsBG.png";
 import WorldShow from "../../MAl/WorldShow";
 import worldsConfig from "../../../Backend/worlds-config";
-import BodyUI from "../../MAl/BodyUI";
-import PanelUI from "../../MAl/PanelUI";
+import BodyUI from "../../MAl/Components/BodyUI";
+import PanelUI from "../../MAl/Components/PanelUI";
 import AdapterWorlds from "./AdapterWorlds/AdapterWorlds";
 import worldsData from '../../../Backend/worlds-config'
 

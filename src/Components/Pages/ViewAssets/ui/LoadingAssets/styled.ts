@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Body = styled.div`
+export const CardLoading = styled.div`
   position: relative;
   border-radius: 20px;
   padding: 10px;
@@ -27,20 +27,5 @@ export const Body = styled.div`
     height: 20vh;
     width: 100%;
     border-radius: 20px;
-  }
-`;
-
-export const Tags = styled.div`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  column-gap: 5px;
-  
-  span {
-    
-    background-color: #61dafb;
-    padding: 5px;
-    border-radius: 10px;
   }
 `;
