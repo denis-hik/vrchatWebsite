@@ -1,21 +1,36 @@
 import React from "react";
 import {CardLoading} from "./styled";
-
-const hiden = ['', '']
+import lottieJson from "../../../../../media/loading.json";
+import {Player} from "@lottiefiles/react-lottie-player";
 
 type LoadingAssetsType = {
-
+    status: string;
 }
 
-const LoadingAssets: React.FC<LoadingAssetsType> = () => {
+const LoadingAssets: React.FC<LoadingAssetsType> = (
+    {
+        status,
+    }
+) => {
 
     return (
         <>
-            {hiden.map((text, index) => (
-                <CardLoading key={index} >
-
-                </CardLoading>
-                ))}
+            {status === "loading"
+                ? <Player
+                    autoplay
+                    loop
+                    controls={false}
+                    src={lottieJson}
+                    style={{height: '300px', width: '300px'}}
+                />
+                : <Player
+                    autoplay
+                    loop
+                    controls={false}
+                    src={"https://assets9.lottiefiles.com/packages/lf20_ne7zlgjw.json"}
+                    style={{ height: '300px', width: '300px' }}
+                />
+            }
         </>
     )
 };

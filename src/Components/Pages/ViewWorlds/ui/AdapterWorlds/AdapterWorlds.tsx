@@ -1,12 +1,13 @@
 import React from "react";
-import { worldsTypes } from "../../../../Backend/types";
-import {Body} from "../styled";
-import Button from "../../../MAl/Components/ButtonUI";
+import { worldsTypes } from "../../../../../Backend/types";
+import {Body} from "../../styled";
+import Button from "../../../../MAl/Components/ButtonUI";
+import {dataWorldType} from "../../../ViewAssets";
 
 
 
 interface propsI {
-    data: worldsTypes[];
+    data: dataWorldType[];
     setIndex: (index: number) => void
 }
 
@@ -15,11 +16,11 @@ const AdapterWorlds = (props: propsI): JSX.Element => {
 
     return (
         <div>
-            {props.data.map(({name, url, image, ex}, index) => (
+            {props.data.map(({title, tag, image,fav}, index) => (
                 <div key={index}>
                     <Button
                         image={image}
-                        text={name}
+                        text={title}
                         onClick={() => props.setIndex(index)}
                     />
                 </div>

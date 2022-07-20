@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {getDark} from "../../Scripts/getDark";
+import {colors} from "../../config/colors";
 
 const isDark = getDark();
 
@@ -8,7 +9,7 @@ export const Body = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => isDark ? '#1e1e5f' : '#61dafb'};
+  background: ${props => isDark ? '#1e1e5f' : colors.blue1};
   img {
     object-fit: cover;
   }

@@ -18,6 +18,7 @@ export const Body = styled.div`
     height: calc(100vh - 16px);
     width: 100%;
     padding: 8px;
+    position: relative;
     background: ${props => isDark ? '#363535' : '#FFFFFF'};
     border-radius:  0 20px 20px 0;
     overflow-y: auto;

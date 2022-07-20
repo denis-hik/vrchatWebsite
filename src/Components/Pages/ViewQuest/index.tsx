@@ -8,6 +8,8 @@ const ViewQuest = (): JSX.Element => {
 
     const [value, setVAlue] = useState('');
 
+
+
     return (
         <BodyUI>
             <Banner

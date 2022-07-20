@@ -1,4 +1,5 @@
 import {Body, Tags} from "./styled";
+import React from "react";
 
 type PropsI = {
     text: string;

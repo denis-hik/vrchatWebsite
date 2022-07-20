@@ -10,7 +10,7 @@ type ItemAssetType = {
 
 export const    ItemAsset: React.FC<ItemAssetType> = ({name, image, setIndex, tags}) => {
 
-    const data = tags.split('[')[1].split(']')[0].split(",")
+    const data = tags ? tags.split('[')[1].split(']')[0].split(",") : [''];
 
     return (
         <Button

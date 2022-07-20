@@ -2,12 +2,15 @@ import React from "react";
 import {Body} from './styled'
 
 type BodyUIType = {
-
+    backImage?: string;
 }
 
-const BodyUI:React.FC = ({children, ...props}) => {
+const BodyUI:React.FC<BodyUIType> = ({backImage, children, ...props}) => {
 
-    return (<Body>{children}</Body>)
+    return (<Body>
+        {backImage && <img src={backImage} className={'banner'}/>}
+        {children}
+    </Body>)
 }
 
 export default BodyUI

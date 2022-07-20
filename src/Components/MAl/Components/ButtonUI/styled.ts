@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {getDark} from "../../Scripts/getDark";
+import {colors} from "../../config/colors";
 
 const isDark = getDark();
 
@@ -17,14 +18,14 @@ export const Body = styled.div<{Bottom?: boolean, to?: string}>`
   width: ${props => props.Bottom ? 'calc(100% - 40px)' : 'unset' };
   
   &.notoutline {
-    background: ${props => isDark ? '#1e1e5f' : '#61dafb'};
-    color: ${props => isDark ? '#363535' : '#FFFFFF'};
+    background: ${props => isDark ? colors.blue2 : colors.blue1};
+    color: ${props => isDark ? '#b9b9b9' : '#FFFFFF'};
     
   }
   
   &.outline {
-    background: ${props => isDark ? '#363535' : '#FFFFFF'};
-    color: ${props => isDark ? '#1e1e5f' : '#61dafb'};
+    background: ${props => isDark ? '#b9b9b9' : '#FFFFFF'};
+    color: ${props => isDark ? '#1e1e5f' : colors.blue1};
     & h4 {
       margin: 0;
     }
@@ -48,7 +49,7 @@ export const Tags = styled.div`
   
   span {
     
-    background-color: ${props => isDark ? '#1e1e5f' : '#61dafb'};
+    background-color: ${props => isDark ? colors.blue2 : colors.blue1};
     padding: 5px;
     border-radius: 10px;
   }
@@ -59,7 +60,7 @@ export const Tags = styled.div`
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;
-//   background: ${props => isDark ? '#1e1e5f' : '#61dafb'};
+//   background: ${props => isDark ? '#1e1e5f' : colors.blue1};
 //   border-radius: 20px;
 //   color: white;
 // `;

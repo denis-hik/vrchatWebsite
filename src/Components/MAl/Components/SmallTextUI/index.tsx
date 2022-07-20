@@ -3,11 +3,11 @@ import React from "react";
 
 type propsType = {
     text: string;
-    color: string;
+    color?: string;
     height?: string | number
 }
 
-const SmallTextUI = ({text, color, height = 'unset'}:propsType) => {
+const SmallTextUI = ({text, color = 'grey', height = 'unset'}:propsType) => {
 
     return (
         <Body style={{height: height}}>

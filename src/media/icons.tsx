@@ -10,4 +10,5 @@ export const closeIcon = () => (
               stroke="black"
               strokeWidth="2"/>
     </svg>
-)
+);
+

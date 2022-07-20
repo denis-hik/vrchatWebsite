@@ -4,6 +4,7 @@ import {LogoUI} from "../../../MAl/Components/LogoUI";
 import SmallTextUI from "../../../MAl/Components/SmallTextUI";
 import BodyCenterUI from "../../../MAl/Components/BodyCenterUI";
 import ButtonUI from "../../../MAl/Components/ButtonUI";
+import {colors} from "../../../MAl/config/colors";
 
 interface propsI {
 
@@ -21,8 +22,8 @@ const Convas = (props: propsI): JSX.Element => {
                 <Button text={'Worlds'} url={'/worlds'}  />
                 <Button text={'Assets'} url={'/assets'}  />
                 <Button text={'Quest Url'} url={'/quest'}  />
-                <Button text={'VRC Api'} url={'/vrc'}  />
-                <SmallTextUI text={'Denis Hik 2022, design DHCui'} color={'#61dafb'} />
+                <Button text={'VRCat App'} url={'/vrcat'}  />
+                <SmallTextUI text={'Denis Hik 2022, design DHCui'} color={colors.blue1} />
             </div>
 
         </BodyCenterUI>

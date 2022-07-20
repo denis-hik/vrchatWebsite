@@ -1,16 +1,35 @@
-import React, {useState} from "react";
+import React, {createRef, useEffect, useRef, useState} from "react";
 import bg from "../../../media/worldsBG.png";
 import WorldShow from "../../MAl/WorldShow";
-import worldsConfig from "../../../Backend/worlds-config";
 import BodyUI from "../../MAl/Components/BodyUI";
 import PanelUI from "../../MAl/Components/PanelUI";
-import AdapterWorlds from "./AdapterWorlds/AdapterWorlds";
-import worldsData from '../../../Backend/worlds-config'
-
+import AdapterWorlds from "./ui/AdapterWorlds/AdapterWorlds";
+import {getWorldsAction} from "./model/getWorldsAction";
+import {dataWorldType} from "../ViewAssets";
+import TextUI from "../../MAl/Components/TextUI";
+import {Player} from "@lottiefiles/react-lottie-player";
+import lottieJson from "../../../media/loading.json"
 
 const ViewWord = ():JSX.Element => {
 
     const [index, setIndex] = useState(-1);
+    const [worlds, setWorlds] = useState<dataWorldType[]>([]);
+    const [text, setText] = useState("Ожидайте...");
+
+    const ref = useRef();
+
+    useEffect(() => {
+        getWorldsAction({
+            successCallback: (data) => {
+                setWorlds(data);
+                console.log(data)
+            },
+            errorCallback: () => {
+                setText("Ничего не обнаруженно")
+                setWorlds([]);
+            }
+        })
+    }, []);
 
     return (
         <BodyUI>
@@ -21,12 +40,22 @@ const ViewWord = ():JSX.Element => {
             />
             <PanelUI name={'worlds'}>
                 {/*@ts-ignore*/}
-                <AdapterWorlds data={worldsData}  setIndex={setIndex}/>
+                {worlds.length > 0
+                    ? <AdapterWorlds data={worlds} setIndex={setIndex}/>
+                    : text == "Ожидайте..."
+                        ? <Player
+                            autoplay
+                            loop
+                            controls={false}
+                            src={lottieJson}
+                            style={{ height: '300px', width: '300px' }}
+                        />
+                        : <TextUI text={text} />
+                }
             </PanelUI>
             {index != -1 && <WorldShow
                 onClose={() => setIndex(-1)}
-                // @ts-ignore
-                data={worldsConfig[index || 0]}
+                data={worlds[index || 0]}
             />}
 
         </BodyUI>

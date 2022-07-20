@@ -13,38 +13,10 @@ export const Convas = (): JSX.Element => {
     const [result, setResult] = useState('');
     const [error, setError] = useState('');
 
-    const getVideo = () => {
-        setError('')
-        // var headers = new Headers();
-        // headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-        // headers.append('Access-Control-Allow-Credentials', 'true');
-        // myHeaders.append("Cookie", "__ddg1_=kdfAhpYEUWO8TSQRpDVt");
 
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow',
-            mode: 'no-cors' as RequestMode,
-        } as RequestInit;
-        if (url.length > 3) {
-            if (url.includes('http')) {
-                fetch("https://maadhav-ytdl.herokuapp.com/video_info.php?url=" + url, requestOptions)
-                    .then(response => response.text())
-                    .then(result => {
-                        console.log(result);
-                        setResult(result)
-                    })
-                    .catch(error => {
-                        setError(error.toString())
-                        console.log('error', error);
-                    });
-            } else {
-                setError('Invalid url')
-            }
 
-        } else {
-            setError('Insert url')
-        }
-
+    const getVideo = async () => {
+        
     }
 
 
