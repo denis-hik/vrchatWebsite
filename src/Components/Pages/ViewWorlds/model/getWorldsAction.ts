@@ -21,6 +21,7 @@ export const getWorldsAction = (
             const data = JSON.parse(res.result.replaceAll("'", '"'));
             data.list.map((data) => {
                 tmp.push({
+                    id: data.id,
                     title: data.name,
                     image: data.image,
                     tag: data.tags,

@@ -1,6 +1,6 @@
 import {Body} from "./styled";
 import TextUI from "./../TextUI";
-import React from "react";
+import React, {useCallback} from "react";
 
 type PanelUIType = {
     name?: string
@@ -8,10 +8,14 @@ type PanelUIType = {
 
 const PanelUI: React.FC<PanelUIType> = ({name, children}) => {
 
+    const onBack = useCallback(() => {
+        history.back();
+    }, [])
+
     return (
         <Body>
             <div className={'panel'}>
-                <TextUI text={name || ''} />
+                <TextUI onClick={onBack} className={'backText'} text={name || ''} />
                 {children}
             </div>
         </Body>

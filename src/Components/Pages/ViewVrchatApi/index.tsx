@@ -7,6 +7,8 @@ import ButtonUI from "../../MAl/Components/ButtonUI";
 import EmptyUI from "../../MAl/Components/EmptyUI";
 import SmallTextUI from "../../MAl/Components/SmallTextUI";
 import bannerImage from "../../../media/banner1.jpg";
+// @ts-ignore
+import video from "../../../media/video.mp4";
 
 type Types = {
 
@@ -20,7 +22,7 @@ export const ViewVrchatApi = (): JSX.Element => {
 
   return (
     <BodyUI
-        backImage={bannerImage}
+        backVideo={video}
     >
       <PanelUI>
           <TextUI text={'VRCat App'} />

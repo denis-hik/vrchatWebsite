@@ -3,6 +3,7 @@ import { worldsTypes } from "../../../../../Backend/types";
 import {Body} from "../../styled";
 import Button from "../../../../MAl/Components/ButtonUI";
 import {dataWorldType} from "../../../ViewAssets";
+import {ListMapVerticalUI} from "../../../../MAl/Components/ListMapVerticalUI";
 
 
 
@@ -15,7 +16,7 @@ interface propsI {
 const AdapterWorlds = (props: propsI): JSX.Element => {
 
     return (
-        <div>
+        <ListMapVerticalUI>
             {props.data.map(({title, tag, image,fav}, index) => (
                 <div key={index}>
                     <Button
@@ -25,7 +26,7 @@ const AdapterWorlds = (props: propsI): JSX.Element => {
                     />
                 </div>
             ))}
-        </div>
+        </ListMapVerticalUI>
     )
 };
 

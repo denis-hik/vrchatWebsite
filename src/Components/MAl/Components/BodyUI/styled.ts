@@ -14,7 +14,13 @@ export const Body = styled.div`
 
   @media (max-width: 1000px) {
     .banner {
-      height: 50%;
+      height: 30%;
+    }
+  }
+  @media (min-width: 1000px) {
+    .banner {
+      width: calc(100%  - 300px);
+      margin-left: 300px;
     }
   }
 `;

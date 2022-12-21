@@ -10,9 +10,9 @@ export const Body = styled.div`
   border-radius: 20px;
   padding-right: 10px;
   position: absolute;
-  left: calc(320px - 4vw);
+  left: 325px;
   bottom: 0;
-  padding-left: 5vw;
+  padding-left: 69px;
   
   .close {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path opacity='.6' fill='%23666E6E' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>");
@@ -25,6 +25,16 @@ export const Body = styled.div`
     padding-left: 5px;
     width: 50px;
     height: 50px;
+  }
+  
+  .imageBlock {
+    position: relative;
+    .favBlock {
+      position: absolute;
+      top: 20px;
+      right: 23px;
+      height: 10px;
+    }
   }
   
   @media(min-width: 1000px) {

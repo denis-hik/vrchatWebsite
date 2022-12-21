@@ -9,6 +9,9 @@ import {AssetShow} from "./ui/AssetShow";
 import LoadingAssets from "./ui/LoadingAssets";
 import {REQUEST_SERVER} from "../../../Backend/types";
 import {getAssetsAction} from "./modal/getAssetsAction";
+import {SliderUI} from "../../MAl/Components/SliderUI";
+import {TwoCollumsUI} from "../../MAl/Components/TwoCollumsUI";
+import {ListMapVerticalUI} from "../../MAl/Components/ListMapVerticalUI";
 
 export type dataAssetType = {
     name: string,
@@ -19,30 +22,23 @@ export type dataAssetType = {
 }
 
 export type dataWorldType = {
+    id: string,
     title: string,
     image: string,
     tag: string[],
     fav: string,
 }
 
+type PropsI = {
+    data: dataAssetType[];
+    status: string;
+}
 
-const ViewAssets = (): JSX.Element => {
+
+const ViewAssets:React.FC<PropsI> = ({data, status}) => {
 
     const [index, setIndex] = useState(-1);
-    const [data, setData] = useState<dataAssetType[]>([])
-    const [status, setStatus] = useState("loading")
-
-    useEffect(() => {
-        getAssetsAction({
-            successCallback: data1 => {
-                setData(data1)
-            },
-            errorCallback: () => {
-                setData([]);
-                setStatus("error");
-            },
-        })
-    }, [])
+    const [selectValueTab, setSelectValueTab] = useState('My');
 
     return (
         <BodyUI>
@@ -52,16 +48,40 @@ const ViewAssets = (): JSX.Element => {
                 alt={'Banner_image'}
             />
             <PanelUI name={'Assets'}>
-                <InputUI hint={'pin'} />
-                <EmptyUI height={'20px'} />
-                {data.length > 0 ? data.map((data: dataAssetType, index) => (
-                    <ItemAsset tags={data[5] ? data[5] : ''} name={data[1]} image={data[3]} setIndex={() => setIndex(index)} />
-                )) : <LoadingAssets status={status} />}
+                <TwoCollumsUI>
+                    <SliderUI
+                        texts={['My', "Other"]}
+                        onSelect={setSelectValueTab}
+                        select={selectValueTab}
+                    />
+                    <InputUI hint={'pin'}/>
+                </TwoCollumsUI>
+                <EmptyUI height={'20px'}/>
+                <ListMapVerticalUI>
+                    {data
+                        .filter((data) => selectValueTab == "Other"
+                            ? data[5].indexOf('my') == -1
+                            : data[5].indexOf('my') > -1)
+                        .length > 0 ? data
+                        .filter((data) => selectValueTab == "Other"
+                            ? data[5].indexOf('my') == -1
+                            : data[5].indexOf('my') > -1)
+                        .map((data: dataAssetType, index) => (
+                            <ItemAsset
+                                tags={data[5] ? data[5] : ''}
+                                name={data[1]} image={data[3]}
+                                setIndex={() => setIndex(index)}
+                                key={index}
+                            />
+                        )) : <LoadingAssets status={status}/>}
+                </ListMapVerticalUI>
             </PanelUI>
             {index != -1 && <AssetShow
                 onClose={() => setIndex(-1)}
                 // @ts-ignore
-                data={data[index]}
+                data={data.filter((data) => selectValueTab == "Other"
+                    ? data[5].indexOf('my') == -1
+                    : data[5].indexOf('my') > -1)[index]}
             />}
         </BodyUI>
     )

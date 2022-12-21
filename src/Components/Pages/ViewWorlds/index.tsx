@@ -22,7 +22,6 @@ const ViewWord = ():JSX.Element => {
         getWorldsAction({
             successCallback: (data) => {
                 setWorlds(data);
-                console.log(data)
             },
             errorCallback: () => {
                 setText("Ничего не обнаруженно")

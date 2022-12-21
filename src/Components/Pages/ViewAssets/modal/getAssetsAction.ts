@@ -22,5 +22,5 @@ export const getAssetsAction = (
         })
         .catch(function (error) {
             errorCallback();
-        })
+    });
 }
