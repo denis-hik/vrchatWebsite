@@ -41,12 +41,9 @@ const ViewAssets:React.FC<PropsI> = ({data, status}) => {
     const [selectValueTab, setSelectValueTab] = useState('My');
 
     return (
-        <BodyUI>
-            <img
-                className={'banner'}
-                src={bg}
-                alt={'Banner_image'}
-            />
+        <BodyUI
+            backImage={bg}
+        >
             <PanelUI name={'Assets'}>
                 <TwoCollumsUI>
                     <SliderUI
