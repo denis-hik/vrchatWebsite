@@ -17,15 +17,14 @@ type Types = {
 export const ViewVrchatApi = (): JSX.Element => {
 
     const onOpen = () => {
-      open("https://mega.nz/folder/Ru4nkKbK#53AOqXeuMi070j3ptHLDjQ", "_blank")
+      open("https://play.google.com/store/apps/details?id=com.denishik.vrchat", "_blank")
     }
 
   return (
     <BodyUI
         backVideo={video}
     >
-      <PanelUI>
-          <TextUI text={'VRCat App'} />
+      <PanelUI name={"VRCat App"}>
           <SmallTextUI text={'VRCat app on android'} />
           <EmptyUI height={'80%'}/>
           <ButtonUI text={'Download'} onClick={onOpen} />

@@ -21,7 +21,7 @@ const Convas = (props: propsI): JSX.Element => {
                 />
                 <Button text={'Worlds'} url={'/worlds'}  />
                 <Button text={'Assets'} url={'/assets'}  />
-                <Button text={'Quest Url'} url={'/quest'}  />
+                <Button text={'My stack vr'} url={'/stack'}  />
                 <Button text={'VRCat App'} url={'/vrcat'}  />
                 <SmallTextUI text={'Denis Hik 2022, design DHCui'} color={colors.blue1} />
             </div>

@@ -6,6 +6,7 @@ import ViewAssets, {dataAssetType} from "./Components/Pages/ViewAssets";
 import ViewQuest from "./Components/Pages/ViewQuest";
 import {ViewVrchatApi} from "./Components/Pages/ViewVrchatApi";
 import {getAssetsAction} from "./Components/Pages/ViewAssets/modal/getAssetsAction";
+import ViewStack from "./Components/Pages/ViewStack";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path={'/assets'} ><ViewAssets status={statusAssets} data={dataAssets} /></Route>
                 <Route path={'/quest'} component={ViewQuest}/>
                 <Route path={'/vrcat'} component={ViewVrchatApi}/>
+                <Route path={'/stack'} component={ViewStack}/>
                 <Route path='/' exact={true} component={ViewStart} />
                 <Redirect to={'/'}/>
             </Switch>
