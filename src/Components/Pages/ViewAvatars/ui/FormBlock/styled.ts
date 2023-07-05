@@ -107,4 +107,29 @@ export const FormBody = styled.div `
     gap: 10px;
   }
   
+  .suc-block {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100px;
+    background: ${props => isDark ? colors.blueDark : colors.blue};
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    span {
+      text-align: center;
+      color: ${props => isDark ? colors.whiteTextDark : colors.whiteText};
+    }
+    
+    .button {
+      margin-top: 10px;
+      width: calc(100% - 50px);
+      background:${props => isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)"};
+    }
+  }
+  
 `

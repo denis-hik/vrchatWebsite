@@ -10,6 +10,7 @@ import ViewStack from "./Components/Pages/ViewStack";
 import {getAssetsGumroadAction} from "./Components/Pages/ViewAssets/modal/getAssetsGumroadAction";
 import {dataAssetType} from "./Backend/types";
 import ViewAvatars from "./Components/Pages/ViewAvatars";
+import {AppBody} from "./styled";
 
 function App() {
     const [dataAssets, setDataAssets] = useState<dataAssetType[]>([]);
@@ -38,7 +39,7 @@ function App() {
     }, []);
 
     return (
-        <div>
+        <AppBody>
             <Switch>
                 <Route path={'/worlds'} component={ViewWord}/>
                 <Route path={'/assets'} ><ViewAssets status={statusAssets} data={dataAssets} /></Route>
@@ -50,7 +51,7 @@ function App() {
                 <Redirect to={'/'}/>
             </Switch>
 
-        </div>
+        </AppBody>
     );
 }
 

@@ -27,7 +27,7 @@ export const getErrorValueAvatar = (valueAvatar) => {
     if (!!valueAvatar.length) {
         if (valueAvatar.indexOf("avtr_") > -1) {
             if (valueAvatar.split("avtr_")[1].length > 7) {
-                if (valueAvatar.split("-").length === 4) {
+                if (valueAvatar.split("-").length === 5) {
                     return undefined;
                 }
             }

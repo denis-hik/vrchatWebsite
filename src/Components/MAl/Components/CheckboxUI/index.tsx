@@ -18,7 +18,7 @@ const CheckboxUI:React.FC<CheckboxUIType> = ({value, onChange, disable, label, e
     }
 
     return (
-        <Body isError={!!error?.length} onClick={() => handleBox(!value)} >
+        <Body disable={disable} isError={!!error?.length} onClick={() => handleBox(!value)} >
             <input checked={value} type={"checkbox"}/>
             {label && <label>{label}</label>}
         </Body>

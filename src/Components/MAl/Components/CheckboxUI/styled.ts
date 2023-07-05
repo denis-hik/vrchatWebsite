@@ -3,8 +3,8 @@ import {getDark} from "../../Scripts/getDark";
 import {colors} from "../../config/colors";
 
 const isDark = getDark();
-export const Body = styled.div<{isError: boolean}> `
-  cursor: pointer;
+export const Body = styled.div<{isError: boolean, disable?: boolean}> `
+  cursor: ${props => props?.disable ? "not-allowed" : "pointer" };
   
   input {
     width: 1.3em;
@@ -24,7 +24,7 @@ export const Body = styled.div<{isError: boolean}> `
   
   label {
     margin-left: 10px;
-    cursor: pointer;
+    cursor: ${props => props?.disable ? "not-allowed" : "pointer" };
     color:  ${props => props?.isError ? "rgba(255,0,0,0.5)" : isDark ? colors.whiteTextDark : colors.whiteText };;
   }
 `

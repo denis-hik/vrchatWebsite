@@ -24,7 +24,7 @@ export const AssetShow: React.FC<AssetShowType> = ({data, onClose}) => {
                 <TextUI  text={data.name}/>
                 {!isShowForm
                     ? <DesBlock data={data} onShowForm={() => setIsShowForm(true)} />
-                    : <FormBlock data={data} />}
+                    : <FormBlock onClose={() => setIsShowForm(false)} data={data} />}
             </div>
 
             {/*<ButtonUI bottom={true} text={'Download'} onClick={() => window.open(data)}/>*/}

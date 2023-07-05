@@ -25,7 +25,7 @@ export const Convas = (): JSX.Element => {
             <div className={'panel'}>
                 <EmptyUI height={'20px'} />
                 {!(result.length > 3) ? <InputUI
-                    onChange={(e) => setUrl(e.target.value)}
+                    onChange={(e) => setUrl(e)}
                     hint={'youtube url'}
                 /> :
                     <TextUI text={result} />}
