@@ -1,4 +1,5 @@
 import React, {useCallback, useRef} from "react";
+import bg from '../../../../media/worldsBG.jpeg';
 import {Body} from './styled'
 
 type BodyUIType = {
@@ -22,6 +23,7 @@ const BodyUI:React.FC<BodyUIType> = ({backImage, backVideo , backVideoImage, chi
     }, []);
 
     return (<Body>
+        {(!backImage && !backVideo) && <img src={bg} className={'banner'}/>}
         {backImage && <img src={backImage} className={'banner'}/>}
         {backVideo && <video
             onLoadedMetadata={onLoaded} className={"banner"}

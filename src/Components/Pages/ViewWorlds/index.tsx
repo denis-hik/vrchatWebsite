@@ -1,5 +1,5 @@
 import React, {createRef, useEffect, useRef, useState} from "react";
-import bg from "../../../media/worldsBG.png";
+import bg from "../../../media/worldsBG.jpeg";
 import WorldShow from "../../MAl/WorldShow";
 import BodyUI from "../../MAl/Components/BodyUI";
 import PanelUI from "../../MAl/Components/PanelUI";

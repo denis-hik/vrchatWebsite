@@ -6,6 +6,7 @@ type PropsI = {
     text: string;
     onClick?: () => void
     image?: string;
+    disable?: boolean;
     outline?: boolean;
     tags?: string[],
     bottom?: boolean,
@@ -20,6 +21,7 @@ const Button: React.FC<PropsI> = (
         bottom,
         text,
         onClick,
+        disable,
         image,
         outline,
         tags,
@@ -30,6 +32,7 @@ const Button: React.FC<PropsI> = (
 
     return (
         <Body
+            disable={disable}
             Bottom={bottom}
             className={classNames(
                 outline ? 'outline' : 'notoutline',

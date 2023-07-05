@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import bg from '../../../media/worldsBG.png';
+import bg from '../../../media/worldsBG.jpeg';
 import {Convas} from "./Convas";
 import {Body, Banner} from './styled'
 import BodyUI from "../../MAl/Components/BodyUI";

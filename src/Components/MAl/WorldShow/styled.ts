@@ -45,7 +45,6 @@ export const Body = styled.div`
   @media(max-width: 1000px) {
     width: calc(100vw - 20px);
     height: 72vh;
-    background: white;
     border-radius: 20px 20px 0 0 ;
     padding: 10px;
     position: absolute;

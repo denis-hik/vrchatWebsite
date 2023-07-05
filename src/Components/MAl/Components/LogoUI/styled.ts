@@ -9,7 +9,7 @@ export const Body = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => isDark ? '#1e1e5f' : colors.blue1};
+  background: ${props => isDark ? '#1e1e5f' : colors.blue};
   img {
     object-fit: cover;
   }

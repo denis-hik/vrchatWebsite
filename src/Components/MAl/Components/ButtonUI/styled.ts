@@ -4,7 +4,7 @@ import {colors} from "../../config/colors";
 
 const isDark = getDark();
 
-export const Body = styled.div<{Bottom?: boolean, to?: string, height?: number}>`
+export const Body = styled.div<{Bottom?: boolean, to?: string, height?: number, disable?: boolean}>`
   position: relative;
   border-radius: 20px;
   margin: ${props => props.to ? '15px' : 'unset'} ;
@@ -16,6 +16,8 @@ export const Body = styled.div<{Bottom?: boolean, to?: string, height?: number}>
   left: ${props => props.Bottom ? '10px' : 'unset' };
   width: ${props => props.Bottom ? 'calc(100% - 40px)' : 'unset' };
   height: ${props => props.height ? `${props.height}px` : 'unset' };
+  cursor: ${props => props.disable ? `not-allowed` : 'pointer' };
+  opacity: ${props => props.disable ? `0.5` : '1' };
   
   &.icon {
     display: flex;
@@ -26,7 +28,7 @@ export const Body = styled.div<{Bottom?: boolean, to?: string, height?: number}>
   }
   
   &.notoutline {
-    background: ${props => isDark ? colors.blue2 : colors.blue1};
+    background: ${props => isDark ? colors.blueDark : colors.blue};
     color: ${props => isDark ? '#b9b9b9' : '#FFFFFF'};
     & h4 {
       margin: 0;
@@ -34,9 +36,9 @@ export const Body = styled.div<{Bottom?: boolean, to?: string, height?: number}>
   }
   
   &.outline {
-    background: ${props => isDark ? '#b9b9b9' : '#FFFFFF'};
-    color: ${props => isDark ? '#1e1e5f' : colors.blue1};
-    border:  2px solid ${props => isDark ? '#1e1e5f' : colors.blue1};
+    background: ${props => isDark ? '#737373' : '#FFFFFF'};
+    color: ${props => isDark ? colors.blueDark : colors.blue};
+    border:  2px solid ${props => isDark ? colors.blueDark : colors.blue};
     & h4 {
       margin: 0;
     }
@@ -68,7 +70,7 @@ export const Tags = styled.div`
   
   span {
     
-    background-color: ${props => isDark ? colors.blue2 : colors.blue1};
+    background-color: ${props => isDark ? colors.blueDark : colors.blue};
     padding: 5px;
     border-radius: 10px;
   }

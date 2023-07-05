@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Convas from "./Convas/Convas";
-import bg from '../../../media/worldsBG.png';
+import bg from '../../../media/worldsBG.jpeg';
 
 import style from "./ViewStart.module.css"
 import BodyUI from "../../MAl/Components/BodyUI";
@@ -21,7 +21,6 @@ const ViewStart = (props:propsI):JSX.Element => {
                 alt={'Banner_image'}
             />
             <Convas />
-            <input value={value} onChange={(el) => setVAlue(el.target.value)} />
         </BodyUI>
     )
 }

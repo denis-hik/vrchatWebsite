@@ -9,10 +9,10 @@ export const Body = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${props => isDark ? '#1e1e5f' : colors.blue1};
+    background: ${props => isDark ? '#1e1e5f' : colors.blue};
     border-radius: 20px;
   a {
 
-    color: ${props => isDark ? '#363535' : '#FFFFFF'} !important;
+    color: ${props => isDark ? colors.whiteTextDark : colors.white} !important;
   }
 `;
