@@ -51,7 +51,11 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose}) => {
                         url: avatarValue,
                         work: data.id === "ripper" ? 0 : 1,
                     },
-                    SuccessCallback: data1 => {setStep1(data1)},
+                    SuccessCallback: data1 => {
+                        setStep1(data1);
+                        localStorage.setItem("workAssetId", data1.id);
+                        localStorage.setItem("workAssetName", data?.id);
+                    },
                     ErrorCallback: e => setStepError(e),
                 })
             } else {

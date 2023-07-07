@@ -12,6 +12,7 @@ export const Body = styled.div<{error?: string, disable?: boolean}>`
       opacity: ${props => props.disable ? "0.7" : "1"};
       
       input {
+        pointer-events: ${props => props.disable ? "none" : "unset"};
         width: -webkit-fill-available;
         outline: none;
         border: none;

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import {InputUI} from "../../MAl/Components/InputUI";
+import {getDark} from "../../MAl/Scripts/getDark";
+import {colors} from "../../MAl/config/colors";
 
+const isDark = getDark();
 export const ImageTextTitleBody = styled.div<{height?: number}>`
   display: flex;
   position: relative;
@@ -70,4 +73,19 @@ export const ImageTextTitleBody = styled.div<{height?: number}>`
 `
 export const StatusInput = styled(InputUI)`
   margin-bottom: 10px;
+`
+
+export const StatusHint = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  background: black;
+  border-radius: 10px;
+  top: 35px;
+  z-index: 2;
+  cursor: pointer;
+  width: 100%;
+  color ${props => isDark ? colors?.whiteTextDark : "#fff"}
 `

@@ -2,7 +2,7 @@ import {dataAssetType, REQUEST_SERVER} from "../../../../Backend/types";
 
 type SendDataAvatarActionType = {
     id: string;
-    SuccessCallback: (data: {id: string, discord: string, status: string}) => void
+    SuccessCallback: (data: {id: string, discord: string, type: string, status: string, isQuest: boolean, url: string, work: string}) => void
     ErrorCallback: (e: string) => void
 }
 
@@ -15,8 +15,12 @@ export const CheckDataAvatarAction = ({ErrorCallback, SuccessCallback, id}: Send
             if (data?.status.indexOf("success") > -1) {
                 SuccessCallback({
                     id: data?.result.id,
-                    discord: "",
-                    status: data?.result?.status
+                    discord: data?.result?.discord,
+                    status: data?.result?.status,
+                    work: data?.result?.work,
+                    url: data?.result?.url,
+                    isQuest: data?.result?.isQuest,
+                    type: data?.result?.type,
                 })
             } else {
                 ErrorCallback(data?.error)
