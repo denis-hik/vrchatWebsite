@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {dataAvatarType} from "../../../../../Backend/types";
+import {dataAssetType, dataAvatarType} from "../../../../../Backend/types";
 import TextUI from "../../../../MAl/Components/TextUI";
-import {FormBody} from "./styled";
+import {FormBody, SuggestionsBlock} from "./styled";
 import {InputUI} from "../../../../MAl/Components/InputUI";
 import {TwoCollumsUI} from "../../../../MAl/Components/TwoCollumsUI";
 import ButtonUI from "../../../../MAl/Components/ButtonUI";
@@ -13,6 +13,7 @@ import {SendDataAvatarAction} from "./modal/sendDataAvatarAction";
 type FormBlockType = {
     data: dataAvatarType;
     onClose: () => void;
+    assets?: dataAssetType[];
 }
 const avatarsType = ["Nardoragon", "Rexouium", "Kitavali", "Sergal", "Canine", "Other"];
 
@@ -23,7 +24,7 @@ const getStyles:() => React.CSSProperties = () => {
     return styleList;
 }
 
-const FormBlock:React.FC<FormBlockType> = ({data, onClose}) => {
+const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
 
     const [isQuestPlatform, setIsQuestPlatform] = useState(false);
     const [typeSelected, setTypeSelected] = useState("");
@@ -69,7 +70,7 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose}) => {
             {!!step1 && typeof step1 !== "boolean" && <>
                 <div className={"title-block"}><span>✔️ Заявка подана!</span></div>
                 <div className={"suc-block"}>
-                    <span>Ваша заявка подана, ее id: {step1?.id}</span>
+                    <span>Ваша заявка подана, ее id: {step1?.id}. C вами свяжутся по дискорду.</span>
                     <ButtonUI className={"button"} text={"Закрыть"} onClick={onClose} />
                 </div>
             </>}
@@ -98,6 +99,19 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose}) => {
                     error={getErrorUrl(avatarValue)}
                     onChange={(e) => setAvatarValue(e)}
                     hint={"url unity package"}
+                    value={avatarValue}
+                    renderSuggestion={assets ? <SuggestionsBlock>
+                        <Scrollbars>
+                            <h2>Мои ассеты</h2>
+                            {assets.map(({name, image, download}) => (
+                                <div onClick={() => setAvatarValue(download === "#" ? image : download )} className={"item"}>
+                                    <img src={image}  />
+                                    <span>{name}</span>
+                                    {(avatarValue === image || avatarValue === download) && <div className={"sel"}>Выбрано</div>}
+                                </div>
+                            ))}
+                        </Scrollbars>
+                    </SuggestionsBlock> : undefined}
                 />}
                 <TwoCollumsUI className={"platform-block"} justifyContent={"normal"} >
                     <ButtonUI

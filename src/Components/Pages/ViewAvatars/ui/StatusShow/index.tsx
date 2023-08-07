@@ -27,7 +27,7 @@ const getStatus = (work) => {
 
 export const StatusShow: React.FC<StatusShowType> = ({data, onClose}) => {
 
-    return (<BodyStatus>
+    return (<BodyStatus isCloseAnim={false}>
         <div style={{height: "inherit",overflow: "hidden", position: "relative"}}>
             <div className={'close'} onClick={onClose}/>
             <TextUI text={data?.work} />

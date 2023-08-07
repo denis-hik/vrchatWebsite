@@ -18,7 +18,7 @@ const WorldShow = ({data, onClose}:propsType) => {
     }, [])
 
     return (
-        <Body>
+        <Body isCloseAnim={false}>
             <div className={'close'} onClick={onClose} />
             <TextUI text={data.title} />
             <div className={'imageBlock'}>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {getDark} from "../../../../MAl/Scripts/getDark";
 import {colors} from "../../../../MAl/config/colors";
-const isDark = getDark();
 export const FormBody = styled.div `
   height: calc(100% - 100px);
   width: calc(100% - 10px);
@@ -132,4 +131,64 @@ export const FormBody = styled.div `
     }
   }
   
+`
+const isDark = getDark();
+
+export const SuggestionsBlock = styled.div<{selected?: boolean}> `
+  background: ${props => isDark ? "#363535" : "white" };
+  border-radius: 10px;
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+  z-index: 7;
+  gap: 5px;
+  transition: .3s ease;
+  
+  h2 {
+    margin-bottom: 0px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-bottom: 1px solid ${props => isDark ? colors.whiteTextDark : "black"};
+    color: ${props => isDark ? colors.whiteTextDark : "black"};
+  }
+  
+  .item {
+    padding: 5px;
+    background: ${props => isDark ? colors.blueDark : colors.blue};
+    height: 70px;
+    display: flex;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+    
+    img {
+      border-radius: 10px;
+      height: 70px;
+      width: 70px;
+      object-fit: cover;
+    }
+    
+    span {
+      margin-left: 10px;
+      height: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      color: ${props => isDark ? colors.whiteTextDark : colors.white};
+    }
+    
+    .sel {
+      position: absolute;
+      left: 75px;
+      background: green;
+      height: 20px;
+      border-radius: 5px;
+      padding: 3px;
+      color: ${props => isDark ? colors.whiteTextDark : colors.white};
+      margin-left: 10px;
+    }
+  }
 `

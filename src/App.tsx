@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import ViewStart from "./Components/Pages/ViewStart";
 import {Route, Redirect, Switch} from "react-router-dom";
 import ViewWord from "./Components/Pages/ViewWorlds";
@@ -15,6 +15,10 @@ import {AppBody} from "./styled";
 function App() {
     const [dataAssets, setDataAssets] = useState<dataAssetType[]>([]);
     const [statusAssets, setStatusAssets] = useState("loading");
+
+    function handleContextMenu(e) {
+        e.preventDefault(); // prevents the default right-click menu from appearing
+    }
 
     useEffect(() => {
         getAssetsAction({
@@ -38,6 +42,13 @@ function App() {
         })
     }, []);
 
+    useEffect(() => {
+        window.addEventListener('contextmenu', handleContextMenu);
+        return () => {
+            window.removeEventListener('contextmenu', handleContextMenu);
+        };
+    });
+
     return (
         <AppBody>
             <Switch>
@@ -45,7 +56,7 @@ function App() {
                 <Route path={'/assets'} ><ViewAssets status={statusAssets} data={dataAssets} /></Route>
                 <Route path={'/quest'} component={ViewQuest}/>
                 <Route path={'/vrcat'} component={ViewVrchatApi}/>
-                <Route path={'/avatars'} component={ViewAvatars}/>
+                <Route path={'/avatars'} ><ViewAvatars assets={dataAssets} /></Route>
                 <Route path={'/stack'} component={ViewStack}/>
                 <Route path='/' exact={true} component={ViewStart} />
                 <Redirect to={'/'}/>

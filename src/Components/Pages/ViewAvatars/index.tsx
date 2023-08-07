@@ -7,17 +7,17 @@ import {ListMapVerticalUI} from "../../MAl/Components/ListMapVerticalUI";
 import {ImageTextTitleBody, StatusHint, StatusInput} from "./styled";
 import {BackIcon} from "../../../media/icons";
 import {AssetShow} from "./ui/AvatarShow";
-import {dataAvatarType} from "../../../Backend/types";
+import {dataAssetType, dataAvatarType} from "../../../Backend/types";
 import {CheckDataAvatarAction} from "./modal/checkDataAvatarAction";
 import img from "../../../media/01.png";
 import {StatusShow} from "./ui/StatusShow";
 import {useQuery} from "../../../Backend/useQuery";
 
 type ViewAvatarsType = {
-
+    assets: dataAssetType[];
 }
 
-const ViewAvatars: React.FC<ViewAvatarsType> = ({}) => {
+const ViewAvatars: React.FC<ViewAvatarsType> = ({assets}) => {
 
     const [selectedId, setSelectedId] = useState<dataAvatarType | boolean>(false);
     const [statusHint, setStatusHint] = useState<dataAvatarType | boolean>(false);
@@ -91,6 +91,7 @@ const ViewAvatars: React.FC<ViewAvatarsType> = ({}) => {
                 </ListMapVerticalUI>
             </PanelUI>
             {selectedId && !sucStatus && <AssetShow
+                assets={assets}
                 onClose={() => setSelectedId(false)}
                 data={typeof selectedId === "boolean" ? {} as dataAvatarType : selectedId}
             />}

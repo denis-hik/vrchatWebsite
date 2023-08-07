@@ -1,10 +1,15 @@
 import React from "react";
 import {Body} from "./styled";
 
-const ImageUI = ({src}) => {
+type ImageUItype = {
+    src: string;
+    onClick?: () => void;
+}
+
+const ImageUI: React.FC<ImageUItype> = ({src, onClick}) => {
 
     return(
-        <Body>
+        <Body onClick={onClick}>
             <img src={src} alt={'image_'} />
         </Body>
     )

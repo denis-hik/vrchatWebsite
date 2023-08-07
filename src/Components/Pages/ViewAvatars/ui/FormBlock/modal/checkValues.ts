@@ -1,5 +1,11 @@
 export const getErrorValueDiscord = (valueDiscord) => {
     if (valueDiscord.length > 0) {
+        if (valueDiscord.indexOf("@") === 0) {
+            if (valueDiscord.split("@")[1].length > 2) {
+                return undefined
+            }
+            return "Введите ник дискорда"
+        }
         if (valueDiscord.indexOf("#") > -1) {
             if (valueDiscord.indexOf("#") > 0) {
                 const code = valueDiscord.split("#")[1]

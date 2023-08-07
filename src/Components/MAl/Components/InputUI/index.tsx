@@ -11,6 +11,7 @@ type InputUIType = {
     value?: string;
     onFocus?: () => void;
     onBlur?: () => void;
+    renderSuggestion?: React.ReactNode;
 }
 
 export const InputUI: React.FC<InputUIType> = (
@@ -24,10 +25,12 @@ export const InputUI: React.FC<InputUIType> = (
         defaultValue,
         onFocus = () => {},
         onBlur = () => {},
+        renderSuggestion,
     }
 ) => {
 
     const [value, setValue] = useState("");
+    const [isFocus, setIsFocus] = useState(false);
     const ref = useRef<any>();
 
     const handleChange = (value) => {
@@ -37,6 +40,17 @@ export const InputUI: React.FC<InputUIType> = (
                 onChange(value)
             }
         }
+    }
+
+    const onBlurInput = () => {
+        setTimeout(() => {
+            onBlur && onBlur();
+            setIsFocus(false);
+        }, 100)
+    }
+    const onFocusInput = () => {
+        setIsFocus(true);
+        onFocus && onFocus();
     }
 
     useEffect(() => {
@@ -52,8 +66,8 @@ export const InputUI: React.FC<InputUIType> = (
     return(
         <Body disable={disable} error={error} className={className}>
             <input
-                onFocus={onFocus}
-                onBlur={onBlur}
+                onFocus={onFocusInput}
+                onBlur={onBlurInput}
                 ref={ref}
                 value={valueB === undefined ? value : valueB}
                 className={'input'}
@@ -61,6 +75,7 @@ export const InputUI: React.FC<InputUIType> = (
                 onChange={(e) => handleChange(e.target.value)}
             />
             {error && <span className={"error"}>{error}</span>}
+            {!!renderSuggestion && isFocus ? <div style={{position: "relative"}}>{renderSuggestion}</div> : null}
         </Body>
     )
 }

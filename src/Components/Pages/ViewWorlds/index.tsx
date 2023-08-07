@@ -9,6 +9,7 @@ import {dataWorldType} from "../ViewAssets";
 import TextUI from "../../MAl/Components/TextUI";
 import {Player} from "@lottiefiles/react-lottie-player";
 import lottieJson from "../../../media/loading.json"
+import {offlineWorlds} from "./model/offlineWorlds";
 
 const ViewWord = ():JSX.Element => {
 
@@ -19,15 +20,16 @@ const ViewWord = ():JSX.Element => {
     const ref = useRef();
 
     useEffect(() => {
-        getWorldsAction({
-            successCallback: (data) => {
-                setWorlds(data);
-            },
-            errorCallback: () => {
-                setText("Ничего не обнаруженно")
-                setWorlds([]);
-            }
-        })
+        // getWorldsAction({
+        //     successCallback: (data) => {
+        //         setWorlds(data);
+        //     },
+        //     errorCallback: () => {
+        //         setText("Ничего не обнаруженно")
+        //         setWorlds([]);
+        //     }
+        // })
+        setWorlds(offlineWorlds);
     }, []);
 
     return (
