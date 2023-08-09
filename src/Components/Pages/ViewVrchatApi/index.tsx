@@ -9,6 +9,7 @@ import SmallTextUI from "../../MAl/Components/SmallTextUI";
 import bannerImage from "../../../media/banner1.jpg";
 // @ts-ignore
 import video from "../../../media/video.mp4";
+import {ModalIOS} from "./ui/ModalIOS";
 
 type Types = {
 
@@ -16,7 +17,7 @@ type Types = {
 
 export const ViewVrchatApi = (): JSX.Element => {
 
-    const [text, setText] = useState('Download on IOS');
+    const [isIOS, setIsIOS] = useState(false);
     const onOpen = () => {
       open("https://play.google.com/store/apps/details?id=com.denishik.vrchat", "_blank")
     }
@@ -30,8 +31,9 @@ export const ViewVrchatApi = (): JSX.Element => {
           <EmptyUI height={'80%'}/>
           <ButtonUI text={'Download on android'} onClick={onOpen} />
           <EmptyUI height={'10px'} />
-          <ButtonUI outline text={text} onClick={() => {setText("Creating..")}} />
+          <ButtonUI outline text={'Download on IOS'} onClick={() => {setIsIOS(true)}} />
       </PanelUI>
+    {isIOS && <ModalIOS onClose={() => setIsIOS(false)} />}
     </BodyUI>
   )
 }
