@@ -36,10 +36,42 @@ export const BodyModal = styled.div `
     }
     .top-block {
       display: flex;
-      justify-content: space-between;
+      justify-content: left;
       align-items: center;
 
         margin-top: 10px;
+      
+      a {
+        text-decoration: none;
+      }
+
+      .icon-block {
+        flex: 1 0 100px;
+        margin-left: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 100px;
+        width: 100px;
+      }
+      
+      .info-block {
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-direction: column;
+        
+        span {
+          width: 100%;
+          text-align: left;
+        }
+        h4 {
+          width: 100%;
+          text-align: left;
+          margin: 0;
+          margin-bottom: 5px;
+        }
+      }
       
       .notoutline {
         margin-right: 10px;
@@ -47,17 +79,8 @@ export const BodyModal = styled.div `
         img {
           width: 20px;
           height: 20px;
-          margin-right: 5px;
           filter: invert(100%);
         }
-      }
-
-      img {
-        margin-left: 10px;
-        border-radius: 10px;
-        overflow: hidden;
-        height: 100px;
-        width: 100px;
       }
     }
     

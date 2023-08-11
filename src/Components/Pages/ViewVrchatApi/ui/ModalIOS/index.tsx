@@ -1,6 +1,7 @@
 import {BodyModal} from "./styled";
 import icon from "../../../../../media/vrcat/icon.png"
 import down from "../../../../../media/vrcat/dowload.png"
+import file from "../../../../../media/vrcat/file.png"
 import s0 from "../../../../../media/vrcat/s0.jpg"
 import s1 from "../../../../../media/vrcat/s1.jpg"
 import loading from "../../../../../media/loading.png"
@@ -25,7 +26,15 @@ export const ModalIOS = ({onClose}) => {
                 {step == 0
                     ?  (<>
                         <div className={"top-block"}>
-                            <img src={icon} />
+                            <img className={"icon-block"} src={icon} />
+                            <div className={"info-block"}>
+                                <h4>VRCat</h4>
+                                <span>IOS 16.0+</span>
+                            </div>
+
+                            <a href={"https://vrchat.denishik.ru/ios/VRCat.ipa"}>
+                                <ButtonUI onClick={() => setStep(1)} icon={file} text={""} />
+                            </a>
                             <a href={"itms-services://?action=download-manifest&url=https://vrchat.denishik.ru/ios/manifest.plist"}>
                                 <ButtonUI onClick={() => setStep(1)} icon={down} text={"Install"} />
                             </a>

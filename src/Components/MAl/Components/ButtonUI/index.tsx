@@ -43,7 +43,7 @@ const Button: React.FC<PropsI> = (
         >
             {image && <img className={'image-img'} src={image} alt={'button_image'}/>}
             {icon && <img className={'icon-img'} src={icon} alt={'button_icon'}/> }
-            <h4>{text}</h4>
+            {text && <h4>{text}</h4>}
             <Tags>{tags && tags.map((text) => (<span>{text.replace('"', "").replace('"', "")}</span>))}</Tags>
         </Body>
     )
