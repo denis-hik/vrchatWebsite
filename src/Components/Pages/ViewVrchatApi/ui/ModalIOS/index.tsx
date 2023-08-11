@@ -2,12 +2,13 @@ import {BodyModal} from "./styled";
 import icon from "../../../../../media/vrcat/icon.png"
 import down from "../../../../../media/vrcat/dowload.png"
 import s0 from "../../../../../media/vrcat/s0.jpg"
+import s1 from "../../../../../media/vrcat/s1.jpg"
 import loading from "../../../../../media/loading.png"
 import ButtonUI from "../../../../MAl/Components/ButtonUI";
 import React, {useState} from "react";
 import Scrollbars from "react-custom-scrollbars-2";
 
-const imagesIOS = [s0]
+const imagesIOS = [s0, s1]
 export const getStyles:() => React.CSSProperties = () => {
     const styleList: React.CSSProperties = {
         height: "50vh",
