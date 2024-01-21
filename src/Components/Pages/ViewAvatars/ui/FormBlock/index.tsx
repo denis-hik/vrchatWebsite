@@ -159,7 +159,8 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
                     На данный момент не делаю под другие аватары!
                 </div>}
                 <div className={"unity-block"}>
-                    <ButtonUI text={"Unity 2019"} />
+                    <ButtonUI disable text={"Unity 2019"} />
+                    <ButtonUI text={"Unity 2022"} />
                 </div>
                 <div className={"action-block"} >
                     <CheckboxUI
@@ -176,6 +177,7 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
                             || !!getErrorValueDiscord(discordValue)
                             || typeSelected === "Other")}
                         error={isErrorAgree ? "Ошибка" : undefined}
+                        disableText={"Что-то не указано"}
                         label={"Я передал всю информацию правильно"}
                     />
                     <ButtonUI

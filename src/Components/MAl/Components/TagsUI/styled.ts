@@ -10,6 +10,7 @@ export const Body = styled.div<{outline?: boolean, isTitle?: boolean}>`
   border: solid 1px ${props => props?.outline ? isDark ? '#1e1e5f' : colors.blue : "none"};
   background: ${props => props?.outline ? "transparent" : isDark ? '#1e1e5f' : colors.blue};
   display: flex;
+  gap: 10px;
   margin: 0 0 10px 0;
   margin-top: ${props => props?.isTitle ? "10px" : "unset"};
   position: relative;

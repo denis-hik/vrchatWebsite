@@ -62,7 +62,7 @@ export const FormBody = styled.div `
     font-style: normal;
     font-weight: 400;
     line-height: 21px;
-    border-radius: 10px;
+    border-radius: 5px;
     background: ${props => isDark ? "rgba(96, 112, 141, 0.22)" : "rgba(96, 141, 129, 0.22)"};
     margin: 0 5px;
   }
@@ -93,7 +93,7 @@ export const FormBody = styled.div `
   .unity-block {
     display: flex;
     margin: 10px 5px;
-    width: 200px;
+    gap: 10px;
   }
   
   .action-block {

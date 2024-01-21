@@ -7,9 +7,10 @@ type CheckboxUIType = {
     disable?: boolean;
     label?: string | React.ReactNode;
     error?: string;
+    disableText?: string
 }
 
-const CheckboxUI:React.FC<CheckboxUIType> = ({value, onChange, disable, label, error}) => {
+const CheckboxUI:React.FC<CheckboxUIType> = ({disableText, value, onChange, disable, label, error}) => {
 
     const handleBox = (isValue) => {
         if (!disable && onChange) {
@@ -21,6 +22,7 @@ const CheckboxUI:React.FC<CheckboxUIType> = ({value, onChange, disable, label, e
         <Body disable={disable} isError={!!error?.length} onClick={() => handleBox(!value)} >
             <input checked={value} type={"checkbox"}/>
             {label && <label>{label}</label>}
+            {disableText && disable && <span className={"disable-tooltip"}>{disableText}</span>}
         </Body>
     )
 };

@@ -7,7 +7,7 @@ const isDark = getDark();
 export const Body = styled.div<{error?: string, disable?: boolean}>`
     & {
       background-color: ${props => props?.error ? "rgba(255,0,0,0.5)" : isDark ? '#1e1e5f' : colors.blue};
-      border-radius: 20px;
+      border-radius: ${props => props?.error ? "10px" : "15px"};
       padding: 10px;
       opacity: ${props => props.disable ? "0.7" : "1"};
       
