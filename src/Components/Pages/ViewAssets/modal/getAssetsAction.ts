@@ -21,14 +21,14 @@ export const getAssetsAction = (
             if (!!data?.length) {
                 for (let i = 0; i < data?.length; i++) {
                     const asset = data[i];
-
+                    console.log(asset[5])
                     res.push({
                         name: asset[1],
                         image: asset[3],
                         id: asset[0],
                         download: asset[4],
                         des: asset[2],
-                        tags: ["my"],
+                        tags: [asset[5]],
                         images: [asset[7]]
                     });
                 }

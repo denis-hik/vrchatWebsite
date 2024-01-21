@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {CSSProperties} from 'react';
 import {Body} from "./styled";
 
 type Types = {
-  justifyContent?: string;
+  justifyContent?: CSSProperties["justifyContent"];
+  gap?: number | string
   className?: string;
 }
 
-export const TwoCollumsUI: React.FC<Types> = ({children, justifyContent, className}) => {
+export const TwoCollumsUI: React.FC<Types> = ({children, justifyContent, gap, className}) => {
 
   return (
-    <Body className={className} justifyContent={justifyContent} >
+    <Body className={className} gap={gap} justifyContent={justifyContent} >
       {children}
     </Body>
   )

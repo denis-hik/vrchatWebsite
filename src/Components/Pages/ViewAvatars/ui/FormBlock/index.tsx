@@ -46,7 +46,9 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
         if (assets === undefined || assets?.length === 0) {
             return [<div></div>]
         }
-        return assets.map(({name, image, download}) => (
+        return assets
+            .filter(({tags}) => tags ? tags[0] === "My" : false)
+            .map(({name, image, download}) => (
             <ItemAssets
                 download={download}
                 setAvatarValue={setAvatarValue}

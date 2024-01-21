@@ -16,16 +16,14 @@ type AssetShowType = {
 
 export const AssetShow: React.FC<AssetShowType> = ({data, onClose}) => {
 
-    const [animClose, setAnimClose] = useState(false);
     const [imgShow, setImgShow] = useState<string | boolean>(false);
 
     const handleClose = useCallback(() => {
-        setAnimClose(true);
-        setTimeout(() => onClose(), 1000);
+        onClose()
     }, [])
 
     return (<>
-        <Body isCloseAnim={animClose}>
+        <Body isCloseAnim={false}>
             <div className={'close'} onClick={handleClose}/>
             <TextUI  text={data.name}/>
             <ImageUI src={data.image}/>
@@ -35,7 +33,7 @@ export const AssetShow: React.FC<AssetShowType> = ({data, onClose}) => {
             <BottomBlock>
                 <div className={"body-buttons"}>
                     <ButtonUI link={`/avatars`} width={"100%"} text={'Add avatar'} />
-                    <ButtonUI width={"100%"} text={'Download'} onClick={() => window.open(data.download)}/>
+                    {!(data.download.includes("#")) && <ButtonUI width={"100%"} text={'Download'} onClick={() => window.open(data.download)}/>}
                 </div>
 
             </BottomBlock>

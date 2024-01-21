@@ -29,7 +29,7 @@ export const SliderUI: React.FC<Types> = (
     return (
         <Body>
             {texts.map((text, id) => (
-                <ButtonUI height={50} onClick={() => onClick(id)} key={id} outline={selectValue != text} text={text}/>
+                <ButtonUI height={20} onClick={() => onClick(id)} key={id} outline={selectValue != text} text={text}/>
             ))}
         </Body>
     )

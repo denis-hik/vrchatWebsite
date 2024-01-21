@@ -40,7 +40,7 @@ const ViewAssets:React.FC<PropsI> = ({data, status}) => {
             backImage={bg}
         >
             <PanelUI name={'Assets'}>
-                <TwoCollumsUI>
+                <TwoCollumsUI gap={"10px"} justifyContent={"space-between"} >
                     <SliderUI
                         texts={['My', "Other"]}
                         onSelect={setSelectValueTab}
@@ -52,14 +52,14 @@ const ViewAssets:React.FC<PropsI> = ({data, status}) => {
                 <ListMapVerticalUI>
                     {data
                         .filter((data) => selectValueTab == "Other"
-                            ? data.tags?.indexOf('my') == -1
+                            ? data.tags?.indexOf('My') == -1
                             // @ts-ignore
-                            : data?.tags?.indexOf('my') > -1)
+                            : data?.tags?.indexOf('My') > -1)
                         .length > 0 ? data
                         .filter((data) => selectValueTab == "Other"
-                            ? data.tags?.indexOf('my') == -1
+                            ? data.tags?.indexOf('My') == -1
                             // @ts-ignore
-                            : data?.tags?.indexOf('my') > -1)
+                            : data?.tags?.indexOf('My') > -1)
                         .map((data: dataAssetType, index) => (
                             <ItemAsset
                                 tags={!!data?.tags?.length ? data?.tags : []}
@@ -71,15 +71,15 @@ const ViewAssets:React.FC<PropsI> = ({data, status}) => {
                 </ListMapVerticalUI>
             </PanelUI>
             {index != -1 && data.filter((data) => selectValueTab == "Other"
-                ? data?.tags?.indexOf('my') == -1
+                ? data?.tags?.indexOf('My') == -1
                 // @ts-ignore
-                : data?.tags?.indexOf('my') > -1)[index] && <AssetShow
+                : data?.tags?.indexOf('My') > -1)[index] && <AssetShow
                 onClose={() => setIndex(-1)}
                 // @ts-ignore
                 data={data.filter((data) => selectValueTab == "Other"
-                    ? data?.tags?.indexOf('my') == -1
+                    ? data?.tags?.indexOf('My') == -1
                     // @ts-ignore
-                    : data?.tags?.indexOf('my') > -1)[index]}
+                    : data?.tags?.indexOf('My') > -1)[index]}
             />}
         </BodyUI>
     )
