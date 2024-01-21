@@ -23,7 +23,7 @@ export const getErrorValueDiscord = (valueDiscord) => {
             return "Должен содержать ник";
         }
 
-        return "Должен содержать хештег";
+        return "Должен содержать хештег или @";
     }
 
     return "Не может быть пустым значением";

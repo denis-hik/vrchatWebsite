@@ -3,12 +3,13 @@ import bg from '../../../../media/worldsBG.jpeg';
 import {Body} from './styled'
 
 type BodyUIType = {
+    reactBack?: React.ReactNode | JSX.Element
     backImage?: string;
     backVideo?: string;
     backVideoImage?: string;
 }
 
-const BodyUI:React.FC<BodyUIType> = ({backImage, backVideo , backVideoImage, children, ...props}) => {
+const BodyUI:React.FC<BodyUIType> = ({reactBack, backImage, backVideo , backVideoImage, children, ...props}) => {
 
     const ref = useRef(null);
 
@@ -23,7 +24,7 @@ const BodyUI:React.FC<BodyUIType> = ({backImage, backVideo , backVideoImage, chi
     }, []);
 
     return (<Body>
-        {(!backImage && !backVideo) && <img src={bg} className={'banner'}/>}
+        {(!backImage && !backVideo && !reactBack) && <img src={bg} className={'banner'}/>}
         {backImage && <img src={backImage} className={'banner'}/>}
         {backVideo && <video
             onLoadedMetadata={onLoaded} className={"banner"}
@@ -38,6 +39,7 @@ const BodyUI:React.FC<BodyUIType> = ({backImage, backVideo , backVideoImage, chi
         >
             <source src={backVideo} type="video/mp4"/>
         </video>}
+        {reactBack}
         {children}
     </Body>)
 }

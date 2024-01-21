@@ -18,6 +18,11 @@ export const Body = styled.div<{Bottom?: boolean, to?: string, height?: number, 
   height: ${props => props.height ? `${props.height}px` : 'unset' };
   cursor: ${props => props.disable ? `not-allowed` : 'pointer' };
   opacity: ${props => props.disable ? `0.5` : '1' };
+  a {
+    width: 100%;
+    text-decoration: none;
+    color: ${props => isDark ? '#b9b9b9' : '#FFFFFF'};
+  }
   
   &.icon {
     display: flex;

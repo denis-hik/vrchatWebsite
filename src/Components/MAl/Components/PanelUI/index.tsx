@@ -4,16 +4,18 @@ import React, {useCallback} from "react";
 
 type PanelUIType = {
     name?: string | React.FC | React.ReactNode
+    hideButtonBack?: boolean
 }
 
-const PanelUI: React.FC<PanelUIType> = ({name, children}) => {
+const PanelUI: React.FC<PanelUIType> = ({name, children, hideButtonBack}) => {
 
     const onBack = useCallback(() => {
-        history.back();
+        if (!hideButtonBack)
+            history.back();
     }, []);
 
     return (
-        <Body>
+        <Body hideButtonBack={hideButtonBack}>
             <div className={'panel'}>
                 {typeof name === "string" ? <TextUI onClick={onBack} className={'backText'} text={name || ''}/> : name}
                 {children}

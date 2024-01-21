@@ -12,7 +12,7 @@ export const Body = styled.div<{isError: boolean, disable?: boolean}> `
     background-color: ${props => props?.isError ? "rgba(255,0,0,0.5)" : isDark ? colors.whiteDark : colors.white };
     border-radius: 50%;
     vertical-align: middle;
-    border: 1px solid ${props => props?.isError ? "rgba(255,0,0,0.5)" : isDark ? colors.whiteDark : colors.white };
+    border: 1px solid ${props => props?.isError ? "rgba(255,0,0,0.5)" : isDark ? colors.whiteDark : colors.blue };
     appearance: none;
     -webkit-appearance: none;
     outline: none;

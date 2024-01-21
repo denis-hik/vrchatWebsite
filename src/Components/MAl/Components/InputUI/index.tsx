@@ -46,7 +46,7 @@ export const InputUI: React.FC<InputUIType> = (
         setTimeout(() => {
             onBlur && onBlur();
             setIsFocus(false);
-        }, 100)
+        }, 150)
     }
     const onFocusInput = () => {
         setIsFocus(true);

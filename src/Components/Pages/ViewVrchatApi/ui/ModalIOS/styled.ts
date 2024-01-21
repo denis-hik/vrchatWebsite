@@ -110,6 +110,10 @@ export const BodyModal = styled.div `
             object-fit: cover;
           }
         }
+        
+        img:last-child {
+          margin-right: 5px;
+        }
       }
     }
     

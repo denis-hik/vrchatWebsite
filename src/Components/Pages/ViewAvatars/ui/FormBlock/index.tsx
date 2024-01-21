@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {ReactElement, useEffect, useMemo, useState} from "react";
 import {dataAssetType, dataAvatarType} from "../../../../../Backend/types";
 import TextUI from "../../../../MAl/Components/TextUI";
 import {FormBody, SuggestionsBlock} from "./styled";
@@ -9,6 +9,7 @@ import {getErrorUrl, getErrorValueAvatar, getErrorValueDiscord} from "./modal/ch
 import CheckboxUI from "../../../../MAl/Components/CheckboxUI";
 import Scrollbars from "react-custom-scrollbars-2";
 import {SendDataAvatarAction} from "./modal/sendDataAvatarAction";
+import ItemAssets from "./components/ItemAssets";
 
 type FormBlockType = {
     data: dataAvatarType;
@@ -35,6 +36,25 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
     const [discordValue, setDiscordValue] = useState("");
     const [avatarValue, setAvatarValue] = useState("");
     const [agreeValue, setAgreeValue] = useState(false);
+
+    const myAssets: dataAssetType | undefined =  data.id !== "ripper"
+        ? assets?.find(({image, download}: dataAssetType) => (image === avatarValue || avatarValue === download))
+        : undefined
+
+
+    const listAssets: ReactElement<any, any>[] = useMemo(() => {
+        if (assets === undefined || assets?.length === 0) {
+            return [<div></div>]
+        }
+        return assets.map(({name, image, download}) => (
+            <ItemAssets
+                download={download}
+                setAvatarValue={setAvatarValue}
+                name={name}
+                image={image}
+            />
+        ))
+    }, [assets]);
 
     const sendData = () => {
         if (!(!!(data.id === "ripper"
@@ -94,7 +114,13 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
                     onChange={(e) => setAvatarValue(e)}
                     hint={"Avatar id"}
                 />}
-                {data.id !== "ripper" && <InputUI
+                {!!myAssets && <ItemAssets
+                    onClose={() => setAvatarValue("")}
+                    image={myAssets.image}
+                    name={myAssets.name}
+                    download={myAssets.download}
+                />}
+                {!myAssets && data.id !== "ripper" && <InputUI
                     className={"input-avatar-id input-block"}
                     error={getErrorUrl(avatarValue)}
                     onChange={(e) => setAvatarValue(e)}
@@ -103,13 +129,7 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
                     renderSuggestion={assets ? <SuggestionsBlock>
                         <Scrollbars>
                             <h2>Мои ассеты</h2>
-                            {assets.map(({name, image, download}) => (
-                                <div onClick={() => setAvatarValue(download === "#" ? image : download )} className={"item"}>
-                                    <img src={image}  />
-                                    <span>{name}</span>
-                                    {(avatarValue === image || avatarValue === download) && <div className={"sel"}>Выбрано</div>}
-                                </div>
-                            ))}
+                            {listAssets}
                         </Scrollbars>
                     </SuggestionsBlock> : undefined}
                 />}

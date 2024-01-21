@@ -11,6 +11,7 @@ import {getAssetsGumroadAction} from "./Components/Pages/ViewAssets/modal/getAss
 import {dataAssetType} from "./Backend/types";
 import ViewAvatars from "./Components/Pages/ViewAvatars";
 import {AppBody} from "./styled";
+import ViewFurCity from "./Components/Pages/ViewFurCity";
 
 function App() {
     const [dataAssets, setDataAssets] = useState<dataAssetType[]>([]);
@@ -58,6 +59,7 @@ function App() {
                 <Route path={'/vrcat'} component={ViewVrchatApi}/>
                 <Route path={'/avatars'} ><ViewAvatars assets={dataAssets} /></Route>
                 <Route path={'/stack'} component={ViewStack}/>
+                <Route path={'/furCity'} component={ViewFurCity}/>
                 <Route path='/' exact={true} component={ViewStart} />
                 <Redirect to={'/'}/>
             </Switch>
