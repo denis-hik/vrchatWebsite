@@ -17,6 +17,7 @@ export const Body = styled.div<{Bottom?: boolean, to?: string, height?: number, 
   width: ${props => props.Bottom ? 'calc(100% - 40px)' : 'unset' };
   height: ${props => props.height ? `${props.height}px` : 'unset' };
   cursor: ${props => props.disable ? `not-allowed` : 'pointer' };
+  pointer-events: ${props => props.disable ? 'none' : ''};
   opacity: ${props => props.disable ? `0.5` : '1' };
   a {
     width: 100%;

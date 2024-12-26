@@ -40,7 +40,7 @@ export const StatusShow: React.FC<StatusShowType> = ({data, onClose}) => {
                 <div className={"text"}><span>Тип аватара: </span><span>{data?.type}</span><br /></div>
                 {data?.work === "ripper" && <div className={"text"}><span>Аватар: </span><a href={ "https://vrchat.com/home/avatar/" + data?.url}>Аватар</a></div>}
                 {data?.work === "add" && <div className={"text"}><span>Ссылка на работу: </span><a href={data?.url}>Ссылка</a></div>}
-                <div className={"text"}><span>Статаус: </span><span>{getStatus(data?.status)}</span><br /></div>
+                <div className={"text"}><span>Статус: </span><span>{getStatus(data?.status)}</span><br /></div>
                 <div className={"text"}><span>Делает: </span><a href={"https://denishik.ru"}>@Denis Hik </a><br /></div>
             </BlockUI>
         </div>

@@ -1,10 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit'
 import assetsSlice from "../Components/Pages/ViewAssets/modal/reducer/assetsSlice";
 import {useDispatch} from "react-redux";
+import avatarsSlice from "../Components/Pages/ViewAvatars/modal/reducers/avatarsSlice";
 
 export const store = configureStore({
     reducer: {
-        assets: assetsSlice
+        assets: assetsSlice,
+        avatars: avatarsSlice
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

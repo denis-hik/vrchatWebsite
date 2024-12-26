@@ -4,6 +4,8 @@ import React, {useEffect, useState} from "react";
 import {dataAssetType, dataAvatarType} from "../../../../../Backend/types";
 import DesBlock from "../DesBlock";
 import FormBlock from "../FormBlock";
+import {useAppDispatch} from "../../../../../context/store";
+import { clearPost } from "../../modal/reducers/avatarsSlice";
 
 type AssetShowType = {
     data: dataAvatarType;
@@ -12,7 +14,14 @@ type AssetShowType = {
 }
 
 export const AssetShow: React.FC<AssetShowType> = ({data, onClose, assets}) => {
+    const dispatch = useAppDispatch()
+
     const [isShowForm, setIsShowForm] = useState(false);
+
+    const onCloseForm = () => {
+        setIsShowForm(false)
+        dispatch(clearPost())
+    }
 
     useEffect(() => {
         setIsShowForm(false);
@@ -25,7 +34,7 @@ export const AssetShow: React.FC<AssetShowType> = ({data, onClose, assets}) => {
                 <TextUI  text={data.name}/>
                 {!isShowForm
                     ? <DesBlock data={data} onShowForm={() => setIsShowForm(true)} />
-                    : <FormBlock assets={assets} onClose={() => setIsShowForm(false)} data={data} />}
+                    : <FormBlock assets={assets} onClose={onCloseForm} data={data} />}
             </div>
 
             {/*<ButtonUI bottom={true} text={'Download'} onClick={() => window.open(data)}/>*/}

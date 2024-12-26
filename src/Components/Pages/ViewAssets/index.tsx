@@ -6,7 +6,7 @@ import {InputUI} from "../../MAl/Components/InputUI";
 import {ItemAsset} from "./ui/ItemAsset";
 import EmptyUI from "../../MAl/Components/EmptyUI";
 import {AssetShow} from "./ui/AssetShow";
-import LoadingAssets from "./ui/LoadingAssets";
+import EmptyAssets from "./ui/LoadingAssets";
 import {SliderUI} from "../../MAl/Components/SliderUI";
 import {TwoCollumsUI} from "../../MAl/Components/TwoCollumsUI";
 import {ListMapVerticalUI} from "../../MAl/Components/ListMapVerticalUI";
@@ -78,7 +78,7 @@ const ViewAssets: React.FC<PropsI> = ({}) => {
                                 setIndex={() => onSelect(data)}
                                 key={index}
                             />
-                        )) : <LoadingAssets status={loading ? "loading" : ""}/>}
+                        )) : <EmptyAssets isLoading={loading} />}
                     </ListMapVerticalUI>
                 </PanelUI>
                 {!!current && <AssetShow

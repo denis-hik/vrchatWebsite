@@ -1,6 +1,5 @@
-import React, {ReactElement, useEffect, useMemo, useState} from "react";
+import React, {ReactElement, useMemo, useState} from "react";
 import {dataAssetType, dataAvatarType} from "../../../../../Backend/types";
-import TextUI from "../../../../MAl/Components/TextUI";
 import {FormBody, SuggestionsBlock} from "./styled";
 import {InputUI} from "../../../../MAl/Components/InputUI";
 import {TwoCollumsUI} from "../../../../MAl/Components/TwoCollumsUI";
@@ -8,8 +7,12 @@ import ButtonUI from "../../../../MAl/Components/ButtonUI";
 import {getErrorUrl, getErrorValueAvatar, getErrorValueDiscord} from "./modal/checkValues";
 import CheckboxUI from "../../../../MAl/Components/CheckboxUI";
 import Scrollbars from "react-custom-scrollbars-2";
-import {SendDataAvatarAction} from "./modal/sendDataAvatarAction";
 import ItemAssets from "./components/ItemAssets";
+import {RootState, useAppDispatch} from "../../../../../context/store";
+import {postAvatar} from "../../modal/actions/postAvatar";
+import {TAvatarsTypes} from "../../modal/types";
+import {useSelector} from "react-redux";
+import {getAvatar} from "../../modal/actions/getAvatar";
 
 type FormBlockType = {
     data: dataAvatarType;
@@ -25,17 +28,18 @@ const getStyles:() => React.CSSProperties = () => {
     return styleList;
 }
 
+const uploadSelector = (root: RootState) => root.avatars.post
 const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
+    const dispatch = useAppDispatch()
 
     const [isQuestPlatform, setIsQuestPlatform] = useState(false);
     const [typeSelected, setTypeSelected] = useState("");
     const [isErrorAgree, setIsErrorAgree] = useState(false);
-    const [step1, setStep1] = useState<{id: string, discord: string, status: string} | boolean>(false);
-    const [stepError, setStepError] = useState<string | boolean>(false);
-
     const [discordValue, setDiscordValue] = useState("");
     const [avatarValue, setAvatarValue] = useState("");
     const [agreeValue, setAgreeValue] = useState(false);
+
+    const post = useSelector(uploadSelector)
 
     const myAssets: dataAssetType | undefined =  data.id !== "ripper"
         ? assets?.find(({image, download}: dataAssetType) => (image === avatarValue || avatarValue === download))
@@ -66,44 +70,46 @@ const FormBlock:React.FC<FormBlockType> = ({data, onClose, assets}) => {
             || typeSelected === "Other")) {
 
             if (agreeValue) {
-                SendDataAvatarAction({
-                    data: {
-                        discord: discordValue,
-                        // @ts-ignore
-                        type: typeSelected,
-                        url: avatarValue,
-                        work: data.id === "ripper" ? 0 : 1,
-                    },
-                    SuccessCallback: data1 => {
-                        setStep1(data1);
-                        localStorage.setItem("workAssetId", data1.id);
-                        localStorage.setItem("workAssetName", data?.id);
-                    },
-                    ErrorCallback: e => setStepError(e),
-                })
+                const promise = dispatch(postAvatar({
+                    discord: discordValue,
+                    type: typeSelected as TAvatarsTypes,
+                    url: avatarValue,
+                    work: data.id === "ripper" ? 0 : 1,
+                })).unwrap()
+                promise
+                    .then(avatar => {
+                        localStorage.setItem("workAssetId", avatar.id);
+                        localStorage.setItem("workAssetName", avatar.id);
+                    })
             } else {
                 setIsErrorAgree(true);
             }
         }
     }
 
+    const onShow = () => {
+        if (post.avatar !== undefined)
+            dispatch(getAvatar({id: post.avatar.id}))
+    }
+
     return (
         <FormBody>
-            {!!step1 && typeof step1 !== "boolean" && <>
+            {post.state === "succeeded" && <>
                 <div className={"title-block"}><span>✔️ Заявка подана!</span></div>
                 <div className={"suc-block"}>
-                    <span>Ваша заявка подана, ее id: {step1?.id}. C вами свяжутся по дискорду.</span>
+                    <span>Ваша заявка подана, ее id: {post.avatar?.id}. C вами свяжутся по дискорду.</span>
                     <ButtonUI className={"button"} text={"Закрыть"} onClick={onClose} />
+                    <ButtonUI className={"button"} text={"Просмотреть"} onClick={onShow} />
                 </div>
             </>}
-            {!!stepError && typeof stepError !== "boolean" && <>
+            {post.state === "failed"  && <>
                 <div className={"title-block"}><span>❌ Заявка не подана!</span></div>
                 <div className={"suc-block"}>
-                    <span>Ваша заявка не подана! По причине {stepError}</span>
+                    <span>Ваша заявка не подана! По причине {post.error.toString()}</span>
                     <ButtonUI className={"button"} text={"Закрыть"} onClick={onClose} />
                 </div>
             </>}
-            {!step1 && !stepError && <>
+            {post.state === "idle" && <>
                 <div className={"title-block"}><span>Оставить заявку</span></div>
                 <InputUI
                     className={"input-discord"}

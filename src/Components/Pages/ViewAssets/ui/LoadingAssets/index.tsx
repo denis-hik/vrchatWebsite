@@ -4,18 +4,18 @@ import lottieJson from "../../../../../media/loading.json";
 import {Player} from "@lottiefiles/react-lottie-player";
 
 type LoadingAssetsType = {
-    status: string;
+    isLoading: boolean;
 }
 
-const LoadingAssets: React.FC<LoadingAssetsType> = (
+const EmptyAssets: React.FC<LoadingAssetsType> = (
     {
-        status,
+        isLoading,
     }
 ) => {
 
     return (
         <>
-            {status === "loading"
+            {isLoading
                 ? <Player
                     autoplay
                     loop
@@ -35,4 +35,4 @@ const LoadingAssets: React.FC<LoadingAssetsType> = (
     )
 };
 
-export default LoadingAssets
+export default EmptyAssets

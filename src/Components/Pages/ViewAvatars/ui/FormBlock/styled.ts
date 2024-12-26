@@ -111,7 +111,7 @@ export const FormBody = styled.div `
     bottom: 0;
     right: 0;
     left: 0;
-    height: 100px;
+    height: 140px;
     background: ${props => isDark ? colors.blueDark : colors.blue};
     border-radius: 20px 20px 0 0;
     display: flex;
