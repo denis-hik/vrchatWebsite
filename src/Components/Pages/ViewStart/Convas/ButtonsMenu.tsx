@@ -30,7 +30,7 @@ const ButtonsMenu = (props: propsI): JSX.Element => {
                     color={colors.gumroad}
                     url={'https://denishik.gumroad.com/'}
                 />
-                <SmallTextUI style={{flex: "1", alignItems: "flex-end", paddingBottom: "10px"}} text={'Denis Hik 2023, design DHCui'} />
+                <SmallTextUI style={{flex: "1", alignItems: "flex-end", paddingBottom: "10px"}} text={'Denis Hik 2024'} />
             </Flex>
         </BodyCenterUI>
     )

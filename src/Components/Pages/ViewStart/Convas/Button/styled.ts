@@ -12,7 +12,8 @@ export const Body = styled.div <{color?:string}>`
     background: ${props => props.color ? props.color : isDark ? '#1e1e5f' : colors.blue};
     border-radius: 20px;
   a {
-
+    width: 100%;
+    text-align: center;
     color: ${props => isDark ? colors.whiteTextDark : colors.white} !important;
   }
 `;

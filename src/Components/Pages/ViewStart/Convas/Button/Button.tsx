@@ -13,9 +13,14 @@ const Button = (props:propsI):JSX.Element => {
 
     return (
         <Body color={props.color} className={"buttons-mai"}>
-            <NavLink to={props.url} >
-                <h4>{props.text}</h4>
-            </NavLink>
+            {props.url.includes("http")
+                ? <a href={props.url}>
+                    <h4>{props.text}</h4>
+                </a>
+                : <NavLink to={props.url}>
+                    <h4>{props.text}</h4>
+                </NavLink>
+            }
         </Body>
     )
 };
