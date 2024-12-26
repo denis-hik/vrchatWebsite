@@ -5,12 +5,13 @@ type propsType = {
     text: string
     className?: string;
     onClick?: () => void;
+    id?:string
 }
 
-const TextUI = ({text, className, onClick}:propsType) => {
+const TextUI = ({text, className, onClick, id}:propsType) => {
 
     return (
-        <Body onClick={onClick} className={className}>
+        <Body id={id} onClick={onClick} className={className}>
             <h3>{text}</h3>
         </Body>
     )

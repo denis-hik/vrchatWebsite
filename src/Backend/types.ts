@@ -16,7 +16,7 @@ export type dataAssetType = {
     des: string,
     download: string,
     id: string | number,
-    tags?: string[] | null,
+    tags: string[],
     images?: string[] | null,
 }
 

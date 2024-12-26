@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import Convas from "./Convas/Convas";
+import React from 'react';
+import ButtonsMenu from "./Convas/ButtonsMenu";
 import bg from '../../../media/worldsBG.jpeg';
 
 import style from "./ViewStart.module.css"
@@ -11,8 +11,6 @@ interface propsI {
 
 const ViewStart = (props:propsI):JSX.Element => {
 
-    const [value, setVAlue] = useState('');
-
     return (
         <BodyUI>
             <img
@@ -20,7 +18,7 @@ const ViewStart = (props:propsI):JSX.Element => {
                 src={bg}
                 alt={'Banner_image'}
             />
-            <Convas />
+            <ButtonsMenu />
         </BodyUI>
     )
 }

@@ -4,12 +4,12 @@ import {colors} from "../../../../MAl/config/colors";
 
 const isDark = getDark();
 
-export const Body = styled.div`
+export const Body = styled.div <{color?:string}>`
     margin: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${props => isDark ? '#1e1e5f' : colors.blue};
+    background: ${props => props.color ? props.color : isDark ? '#1e1e5f' : colors.blue};
     border-radius: 20px;
   a {
 

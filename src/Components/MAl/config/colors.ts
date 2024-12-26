@@ -5,4 +5,5 @@ export const colors = {
     whiteDark: "#737373",
     whiteText: "#000",
     whiteTextDark: "#b9b9b9",
+    gumroad: "#ff90e8"
 }

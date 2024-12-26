@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import TagsUI from "../../../../MAl/Components/TagsUI";
 
-export const TagsBlock = styled(TagsUI)`
+export const TagsBlock = styled(TagsUI)<{right?: string | number, left?: number | string}>`
   position: absolute;
   bottom: 50px;
-  right: 0;
-  left: 0;
+  right:  ${(props) => props.right + `${props.right !== undefined ? typeof props.right !== "string" ? "px" : "" : "0px"}`};
+  left: ${(props) => props.left + `${props.left !== undefined ? typeof props.left !== "string" ? "px" : "" : "0px"}`};
 `
 
 export const ActionsBlock = styled.div`

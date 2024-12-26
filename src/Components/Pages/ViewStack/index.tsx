@@ -13,7 +13,7 @@ const ViewStack: React.FC<ViewStackType> = () => {
     return (
         <BodyUI backImage={img}>
             <PanelUI name={"My stack VR"}>
-                <ButtonUI  text={"Oculus VR"} image={"https://igroray.ru/upload/iblock/279/615YaAiA_ML._SL1500_.jpg"} />
+                <ButtonUI  text={"Oculus Pro VR"} image={"https://portagame.ru///katalog/game/vr-headsets/oculus-quest-pro-256.jpg"} />
                 <EmptyUI height={'10px'} />
                 <ButtonUI text={"VIVE Trackers 4x"} image={"https://cdn1.ozone.ru/s3/multimedia-l/c1000/6105217617.jpg"} />
                 <EmptyUI height={'10px'} />

@@ -12,18 +12,23 @@ import {CheckDataAvatarAction} from "./modal/checkDataAvatarAction";
 import img from "../../../media/01.png";
 import {StatusShow} from "./ui/StatusShow";
 import {useQuery} from "../../../Backend/useQuery";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../context/store";
 
 type ViewAvatarsType = {
-    assets: dataAssetType[];
 }
 
-const ViewAvatars: React.FC<ViewAvatarsType> = ({assets}) => {
+const assetsSelector = (root:RootState) => Object.values(root.assets.data)
+
+const ViewAvatars: React.FC<ViewAvatarsType> = () => {
 
     const [selectedId, setSelectedId] = useState<dataAvatarType | boolean>(false);
     const [statusHint, setStatusHint] = useState<dataAvatarType | boolean>(false);
     const [sucStatus, setSucStatus] = useState<boolean | {id: string, discord: string, type: string, status: string, isQuest: boolean, url: string, work: string}>(false);
     const [statusId, setStatusId] = useState<string>("");
     const query = useQuery();
+
+    const assets = useSelector(assetsSelector)
 
     const ImageTitle = () => {
 

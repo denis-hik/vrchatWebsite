@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import bg from "../../../media/worldsBG.jpeg";
 import BodyUI from "../../MAl/Components/BodyUI";
 import PanelUI from "../../MAl/Components/PanelUI";
@@ -11,6 +11,10 @@ import {SliderUI} from "../../MAl/Components/SliderUI";
 import {TwoCollumsUI} from "../../MAl/Components/TwoCollumsUI";
 import {ListMapVerticalUI} from "../../MAl/Components/ListMapVerticalUI";
 import {dataAssetType} from "../../../Backend/types";
+import {AssetsPageContextProvider} from "./modal/context";
+import {useSelector} from "react-redux";
+import {RootState, useAppDispatch} from "../../../context/store";
+import { setAssetCurrent } from "./modal/reducer/assetsSlice";
 
 export type dataWorldType = {
     id: string,
@@ -20,68 +24,69 @@ export type dataWorldType = {
     fav: string,
 }
 
-type PropsI = {
-    data: dataAssetType[];
-    status: string;
-}
+type PropsI = {}
 
+const assetsSelector = (root: RootState) => root.assets.data
+const loadSelector = (root: RootState) => ["idle", "pending"].includes(root.assets.state)
+const currentSelector = (root: RootState) => root.assets.current
 
-const ViewAssets:React.FC<PropsI> = ({data, status}) => {
+const ViewAssets: React.FC<PropsI> = ({}) => {
+    const dispatch = useAppDispatch()
 
-    const [index, setIndex] = useState(-1);
     const [selectValueTab, setSelectValueTab] = useState('My');
 
-    useEffect(() => {
-        setIndex(-1);
+    const dataSelector = useCallback((root: RootState): dataAssetType[] => {
+        const assets = assetsSelector(root)
+        if (!assets)
+            return []
+
+        return Object.values(assets).filter((item: dataAssetType) => item.tags.includes(selectValueTab))
     }, [selectValueTab])
 
+    const data = useSelector(dataSelector)
+    const loading = useSelector(loadSelector)
+    const current = useSelector(currentSelector)
+
+    const onSelect = (data: dataAssetType) => {
+        dispatch(setAssetCurrent(data))
+    }
+
+    const closeSelect = () => {
+        dispatch(setAssetCurrent())
+    }
+
     return (
-        <BodyUI
-            backImage={bg}
-        >
-            <PanelUI name={'Assets'}>
-                <TwoCollumsUI gap={"10px"} justifyContent={"space-between"} >
-                    <SliderUI
-                        texts={['My', "Other"]}
-                        onSelect={setSelectValueTab}
-                        select={selectValueTab}
-                    />
-                    <InputUI hint={'pin'}/>
-                </TwoCollumsUI>
-                <EmptyUI height={'20px'}/>
-                <ListMapVerticalUI>
-                    {data
-                        .filter((data) => selectValueTab == "Other"
-                            ? data.tags?.indexOf('My') == -1
-                            // @ts-ignore
-                            : data?.tags?.indexOf('My') > -1)
-                        .length > 0 ? data
-                        .filter((data) => selectValueTab == "Other"
-                            ? data.tags?.indexOf('My') == -1
-                            // @ts-ignore
-                            : data?.tags?.indexOf('My') > -1)
-                        .map((data: dataAssetType, index) => (
+        <AssetsPageContextProvider>
+            <BodyUI
+                backImage={bg}
+            >
+                <PanelUI name={'Assets'}>
+                    <TwoCollumsUI gap={"10px"} justifyContent={"space-between"}>
+                        <SliderUI
+                            texts={['My', "Other"]}
+                            onSelect={setSelectValueTab}
+                            select={selectValueTab}
+                        />
+                        <InputUI hint={'pin'}/>
+                    </TwoCollumsUI>
+                    <EmptyUI height={'20px'}/>
+                    <ListMapVerticalUI>
+                        {!!data.length ? data.map((data: dataAssetType, index) => (
                             <ItemAsset
                                 tags={!!data?.tags?.length ? data?.tags : []}
                                 name={data.name} image={data.image}
-                                setIndex={() => setIndex(index)}
+                                setIndex={() => onSelect(data)}
                                 key={index}
                             />
-                        )) : <LoadingAssets status={status}/>}
-                </ListMapVerticalUI>
-            </PanelUI>
-            {index != -1 && data.filter((data) => selectValueTab == "Other"
-                ? data?.tags?.indexOf('My') == -1
-                // @ts-ignore
-                : data?.tags?.indexOf('My') > -1)[index] && <AssetShow
-                onClose={() => setIndex(-1)}
-                // @ts-ignore
-                data={data.filter((data) => selectValueTab == "Other"
-                    ? data?.tags?.indexOf('My') == -1
-                    // @ts-ignore
-                    : data?.tags?.indexOf('My') > -1)[index]}
-            />}
-        </BodyUI>
+                        )) : <LoadingAssets status={loading ? "loading" : ""}/>}
+                    </ListMapVerticalUI>
+                </PanelUI>
+                {!!current && <AssetShow
+                    onClose={closeSelect}
+                    data={current}
+                />}
+            </BodyUI>
+        </AssetsPageContextProvider>
     )
 }
 

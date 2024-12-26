@@ -20,15 +20,6 @@ const ViewWord = ():JSX.Element => {
     const ref = useRef();
 
     useEffect(() => {
-        // getWorldsAction({
-        //     successCallback: (data) => {
-        //         setWorlds(data);
-        //     },
-        //     errorCallback: () => {
-        //         setText("Ничего не обнаруженно")
-        //         setWorlds([]);
-        //     }
-        // })
         setWorlds(offlineWorlds);
     }, []);
 

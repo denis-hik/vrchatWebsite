@@ -16,12 +16,16 @@ export const Body = styled.div`
 
   .panel {
     position: relative;
-    display: block;
+    //display: block;
     overflow: hidden;
     width: 50%;
     height: 50%;
     background: ${props => isDark ? '#363535' : '#FFFFFF'};
     border-radius: 20px;
+    
+    .buttons-mai {
+      margin-bottom: 0;
+    }
   }
 
   @media (max-width: 1000px) {

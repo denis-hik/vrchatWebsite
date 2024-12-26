@@ -4,6 +4,9 @@ import TextUI from "../Components/TextUI";
 import ImageUI from "../Components/ImageUI";
 import ButtonUI from "../Components/ButtonUI";
 import {dataWorldType} from "../../Pages/ViewAssets";
+import EmptyUI from "../Components/EmptyUI";
+import {Tags} from "../Components/ButtonUI/styled";
+import {TagsBlock} from "../../Pages/ViewAvatars/ui/AvatarShow/styled";
 
 type propsType = {
     data: dataWorldType ;
@@ -15,7 +18,7 @@ const WorldShow = ({data, onClose}:propsType) => {
 
     const VRChatOpen = useCallback(() => {
         window.open(`https://vrchat.com/home/world/${data.id}`, '_blank')
-    }, [])
+    }, [data.id])
 
     return (
         <Body isCloseAnim={false}>
@@ -33,6 +36,7 @@ const WorldShow = ({data, onClose}:propsType) => {
                 onClick={VRChatOpen}
                 text={'Open VRChat'}
             />
+            <TagsBlock title={"Теги"}  outline={true} left={"45px"} right={"10px"} list={data.tag}/>
             {/*<TagsUI list={data.tag} />*/}
             {/*<ButtonUI bottom={!data.gallery} text={'Join'} onClick={() => window.open(data.url)} />*/}
             {/*{data.gallery && <GridUI>*/}
