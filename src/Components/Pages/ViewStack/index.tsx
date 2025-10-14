@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
 import BodyUI from "../../MAl/Components/BodyUI";
-import img from "../../../media/stackBG.png"
 import slime from "../../../media/slime.jpg"
 import PanelUI from "../../MAl/Components/PanelUI";
 import ButtonUI from "../../MAl/Components/ButtonUI";
 import EmptyUI from "../../MAl/Components/EmptyUI";
+
+import img from "../../../media/stackBG.png"
 
 type ViewStackType = {};
 
 const ViewStack: React.FC<ViewStackType> = () => {
 
     return (
-        <BodyUI backImage={img}>
+        <BodyUI invertXBanner backImage={img}>
             <PanelUI name={"My stack VR"}>
                 <ButtonUI  text={"Oculus Pro VR"} image={"https://portagame.ru///katalog/game/vr-headsets/oculus-quest-pro-256.jpg"} />
                 <EmptyUI height={'10px'} />

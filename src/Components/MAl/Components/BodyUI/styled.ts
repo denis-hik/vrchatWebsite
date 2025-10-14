@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Body = styled.div`
+export const Body = styled.div<{invertXBanner?: boolean}>`
   width: 100%;
 
   .banner {
@@ -9,8 +9,18 @@ export const Body = styled.div`
     position: absolute;
     top: 0;
     left: 0;
+    transform: ${(props) => props?.invertXBanner ? "scaleX(-1)" : "scaleX(1)"};
     object-fit: cover;
+    transition: opacity 0.2s ease;
   }
+
+    .fade-in {
+        opacity: 1;
+    }
+
+    .fade-out {
+        opacity: 0;
+    }
 
   @media (max-width: 1000px) {
     .banner {

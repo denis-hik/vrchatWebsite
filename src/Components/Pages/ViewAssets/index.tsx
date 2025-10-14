@@ -30,6 +30,8 @@ const assetsSelector = (root: RootState) => root.assets.data
 const loadSelector = (root: RootState) => ["idle", "pending"].includes(root.assets.state)
 const currentSelector = (root: RootState) => root.assets.current
 
+const bgImages = [bg, "https://vrchat.denishik.ru/static/media/erpCard.png", "https://public-files.gumroad.com/z22suczpdrwuvm1dk9se5zm3o5dl"]
+
 const ViewAssets: React.FC<PropsI> = ({}) => {
     const dispatch = useAppDispatch()
 
@@ -57,9 +59,7 @@ const ViewAssets: React.FC<PropsI> = ({}) => {
 
     return (
         <AssetsPageContextProvider>
-            <BodyUI
-                backImage={bg}
-            >
+            <BodyUI backImage={bgImages}>
                 <PanelUI name={'Assets'}>
                     <TwoCollumsUI gap={"10px"} justifyContent={"space-between"}>
                         <SliderUI
